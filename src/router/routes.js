@@ -1,9 +1,10 @@
-import Home from "../pages/Home/index";
+
+import Dashboard from '../components/Sidebar'
 
 const routes = [
   {
     path: "/",
-    component: Home
+    component: Dashboard
   }
 ];
 
