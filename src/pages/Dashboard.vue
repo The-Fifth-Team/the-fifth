@@ -1,5 +1,7 @@
 <template lang="html">
-  <Sidebar></Sidebar>
+  <div>
+    <Sidebar />
+  </div>
 </template>
 
 <script lang="js">
@@ -10,18 +12,18 @@ import Sidebar from '../components/Sidebar'
       Sidebar
     },
     props: [],
-    mounted () {
-
-    },
     data () {
       return {
 
       }
     },
-    methods: {
+    computed: {
 
     },
-    computed: {
+    mounted () {
+
+    },
+    methods: {
 
     }
 }
