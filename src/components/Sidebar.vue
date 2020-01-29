@@ -2,9 +2,7 @@
 
   <div id="parentx">
 
-    <vs-button @click="active=!active, notExpand = false" color="success" type="filled">Open Sidebar Reduce-expand</vs-button>
-    <vs-button @click="active=!active, notExpand = true" color="success" type="filled">Open Sidebar Reduce-only</vs-button>
-    <vs-sidebar :reduce="reduce" :reduce-not-hover-expand="notExpand" parent="body" default-index="1"  color="success" class="sidebarx" spacer v-model="active">
+    <vs-sidebar hidden-background="true" staticPosition="fixed" :reduce="reduce" :reduce-not-hover-expand="notExpand" parent="body" default-index="1"  color="success" class="sidebarx" spacer v-model="active">
 
       <div class="header-sidebar" slot="header">
         <vs-avatar  size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
@@ -68,6 +66,8 @@ export default {
 </script>
 
 <style lang="stylus">
+.vs-sidebar 
+  backgroundColor lightgreen
 .header-sidebar
   display flex
   align-items center
