@@ -1,9 +1,9 @@
-
-import Dashboard from '../components/Sidebar'
+import Dashboard from '../pages/Dashboard'
 
 const routes = [
   {
-    path: "/",
+    path: '/',
+    name: 'Dashboard',
     component: Dashboard
   }
 ];

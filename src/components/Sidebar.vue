@@ -57,6 +57,7 @@
 
 <script>
 export default {
+  name: 'Sidebar',
   data:()=>({
     active:false,
     notExpand: false,
@@ -66,8 +67,6 @@ export default {
 </script>
 
 <style lang="stylus">
-.vs-sidebar 
-  backgroundColor lightgreen
 .header-sidebar
   display flex
   align-items center
