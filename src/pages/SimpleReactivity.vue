@@ -2,16 +2,11 @@
 import { hierarchy, pack, treemap } from 'd3-hierarchy'
 import { pie } from 'd3-shape'
 import DiagramSelect from '../components/DiagramSelect'
-// import SimpleCirclePack from '../components/SimpleCirclePack'
-// import SimpleTreemap from '../components/SimpleTreemap'
-// import SimplePie from '../components/SimplePie'
 
 export default {
   components: {
-    // SimpleTreemap,
     DiagramSelect,
-    // SimpleCirclePack,
-    // SimplePie
+
   },
   data() {
     return {
@@ -82,23 +77,8 @@ export default {
           return b.value - a.value
         })
 
-      // https://github.com/d3/d3-hierarchy/blob/master/README.md#treemap
-      /*
-      treemap adds:
-      node.x0 - the left edge of the rectangle
-      node.y0 - the top edge of the rectangle
-      node.x1 - the right edge of the rectangle
-      node.y1 - the bottom edge of the rectangle
-      */
       this.treemapLayout(h)
 
-      // https://github.com/d3/d3-hierarchy/blob/master/README.md#pack
-      /*
-      pack adds:
-      node.x - the x-coordinate of the circle’s center
-      node.y - the y-coordinate of the circle’s center
-      node.r - the radius of the circle
-       */
       this.packLayout(h)
 
       return h

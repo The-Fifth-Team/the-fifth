@@ -1,24 +1,22 @@
 import Vue from 'vue';
 import App from './App.vue';
-import Vuesax from 'vuesax';
 import router from "./router/index";
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import BootstrapVue from 'bootstrap-vue';
 
-import 'material-icons/iconfont/material-icons.css';
-import 'vuesax/dist/vuesax.css'; //Vuesax styles
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.use(Vuesax);
+import store from './components/store';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
 
-export const eventBus = new Vue()
 
 Vue.config.productionTip = false;
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

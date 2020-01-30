@@ -1,11 +1,11 @@
-// import Dashboard from '../pages/Dashboard'
-// import Sunburst from '../components/charts/Sunburst'
-// import Sunburst from '../pages/WorldPopulation'
+import Layout from '../components/Layout/Layout'
+// import Sidebar from '../components/Sidebar/Sidebar';
+
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
-    component: () => import('../pages/WorldPopulation')
+    name: 'Layout',
+    component: Layout 
   }
 ];
 
