@@ -1,12 +1,18 @@
 <script>
-import * as d3 from 'd3'
-import ToolTip from '../components/ToolTip'
-import Sunburst from '../components/charts/Sunburst'
+import * as d3 from 'd3';
+import DiagramSelect from '../components/DiagramSelect';
+import ToolTip from '../components/ToolTip';
+import Sunburst from '../components/charts/Sunburst';
+import TreeMap from '../components/TreeMap';
+import CirclePack from '../components/CirclePack';
 
 export default {
   components: {
     ToolTip,
-    Sunburst
+    Sunburst,
+    DiagramSelect,
+    CirclePack,
+    TreeMap
   },
   data() {
     return {
@@ -52,16 +58,7 @@ export default {
         i++
       })
     },
-    // `hsl(${(360 / count) * i}, 70%, 50%)`
     partition() {
-      // https://github.com/d3/d3-hierarchy/blob/master/README.md#partition
-      /*
-      partition adds:
-      node.x0 - the left edge of the rectangle
-      node.y0 - the top edge of the rectangle
-      node.x1 - the right edge of the rectangle
-      node.y1 - the bottom edge of the rectangle
-      */
       let i = -1
       let colors = this.colors
       let h = d3.hierarchy(this.nestedData, v => v.values)
@@ -1496,20 +1493,23 @@ export default {
   <div :class="$style.population">
     <ToolTip />
     <h1>World Population</h1>
-    <!-- <DiagramSelect
+    <DiagramSelect
       v-model="selected"
       v-bind="{ select }"
-    /> -->
-    <!-- 
+    />
+
+    <TreeMap
+      v-if="selected === 'treemap'"
+      v-bind="{ data: treemap, width, height }"
+    />
+
     <CirclePack
       v-if="selected === 'pack'"
       v-bind="{ data: pack, width, height }"
     />
-    <TreeMap
-      v-if="selected === 'treemap'"
-      v-bind="{ data: treemap, width, height }"
-    />  -->
+
     <Sunburst
+      v-if="selected === 'sunburst'"
       v-bind="{ data: partition, radius }"
     />
   </div>
