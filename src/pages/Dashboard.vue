@@ -1,10 +1,12 @@
 <template lang="html">
   <div>
-    
-      <b-row>
-        <b-col sm="1"><Sidebar></Sidebar></b-col>
-        <b-col sm="11"><Statbar></Statbar></b-col>
-      </b-row>
+    <b-container>
+      <Navbar></Navbar>
+    </b-container>
+    <b-row>
+      <b-col sm="1"><Sidebar></Sidebar></b-col>
+      <b-col sm="11"><Statbar></Statbar></b-col>
+    </b-row>
     
   </div>
 </template>
@@ -12,11 +14,13 @@
 <script lang="js">
 import Sidebar from '../components/Sidebar';
 import Statbar from '../components/Statbar';
+import Navbar from '../components/Navbar';
 
 export default  {
   components: {
     Sidebar,
-    Statbar
+    Statbar,
+    Navbar
   },
   props: [],
   mounted () {

@@ -14,6 +14,7 @@ Vue.use(Vuesax);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
+export const eventBus = new Vue()
 
 Vue.config.productionTip = false;
 

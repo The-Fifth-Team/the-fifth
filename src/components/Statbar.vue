@@ -3,7 +3,7 @@
     <div class="statbar">
     <b-card>
       <b-row>
-        <b-col sm="3" xs="12">
+        <b-col md='3' sm="12">
         <div>
         <b-card
           img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2nowCkCyxSgdAjTkemazQJOoTFomc9kNa4DduDLuTUZ1Qgj7W"
@@ -19,7 +19,7 @@
         </div>
         </b-col>
     
-        <b-col sm="3" xs="12">
+        <b-col md='3' sm="12">
         <div>
         <b-card
           img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2nowCkCyxSgdAjTkemazQJOoTFomc9kNa4DduDLuTUZ1Qgj7W"
@@ -35,7 +35,7 @@
         </div>
         </b-col>
     
-        <b-col sm="3" xs="12">
+        <b-col md='3' sm="12">
         <div>
         <b-card
           img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2nowCkCyxSgdAjTkemazQJOoTFomc9kNa4DduDLuTUZ1Qgj7W"
@@ -51,7 +51,7 @@
         </div>
         </b-col>
     
-        <b-col sm="3" xs="12">
+        <b-col md='3' sm="12">
         <div>
         <b-card
           img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT2nowCkCyxSgdAjTkemazQJOoTFomc9kNa4DduDLuTUZ1Qgj7W"
