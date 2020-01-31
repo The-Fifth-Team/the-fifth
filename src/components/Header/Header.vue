@@ -82,7 +82,7 @@
           <i class="la la-globe" />
         </a>
         <i v-if="chatNotificationIcon" class="chat-notification-sing animated bounceIn"></i>
-        <div id="chat-notification" class="chat-notification" :class="{'notification-hidden': !chatNotificationPopover}">
+        <!-- <div id="chat-notification" class="chat-notification" :class="{'notification-hidden': !chatNotificationPopover}">
           <div class="chat-notification-inner">
             <h6 class="title d-flex text-white">
               <span class="thumb-xs">
@@ -91,12 +91,12 @@
               </span>
               Jess Smith
             </h6>
-            <p class="text">
+             <p class="text">
               Hi there! <br /> This is a completely new version of Sing App <br />
               built with <strong class="text-primary">Vue</strong>
             </p>
           </div>
-        </div>
+        </div> -->
       </b-nav-item>
       <b-nav-item class="fs-lg d-md-none">
         <a href="#" @click="toggleChat">

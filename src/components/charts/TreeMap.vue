@@ -1,5 +1,5 @@
 <script>
-import { eventBus } from '../main'
+import { eventBus } from '../../main'
 import * as d3 from 'd3'
 
 export default {

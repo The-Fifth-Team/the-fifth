@@ -23,17 +23,17 @@
         isHeader
       />
       <NavLink
+        header="Sec Charts"
+        link="/app/seccharts"
+        iconName="flaticon-star"
+        index="notifications"
+        isHeader
+      />
+      <NavLink
         header="Tables Basic"
         link="/app/tables"
         iconName="flaticon-equal-1"
         index="tables"
-        isHeader
-      />
-      <NavLink
-        header="Notifications"
-        link="/app/notifications"
-        iconName="flaticon-star"
-        index="notifications"
         isHeader
       />
       <NavLink

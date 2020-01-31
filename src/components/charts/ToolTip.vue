@@ -1,7 +1,6 @@
 <script>
 import * as d3 from 'd3'
-import { eventBus } from '../main'
-
+import { eventBus } from '../../main'
 export default {
   data(){
     return {
@@ -17,7 +16,6 @@ export default {
       this.label = data.label
       this.openTooltip()
     })
-
     eventBus.$on('closeTooltip', (data) => {
       this.event = data.event
       this.closeTooltip()
@@ -27,7 +25,6 @@ export default {
     openTooltip() {
       const tooltip = d3.select('#tooltip')
       const format = d3.format(",");
-
       tooltip
         .select('.tt-parent')
         .text(this.item.parent.data.key)
@@ -37,10 +34,8 @@ export default {
       tooltip
         .select('.tt-value')
         .text(`${this.label}${format(this.item.value)}`)
-
       const tooltipElement = tooltip.node().getBoundingClientRect()
       const { height } = tooltipElement
-
       tooltip
         .style('opacity', 1)
         .style('left', `${this.event.pageX}px`)

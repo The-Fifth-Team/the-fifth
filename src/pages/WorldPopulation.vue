@@ -1,18 +1,17 @@
 <script>
-import * as d3 from 'd3';
-import DiagramSelect from '../components/DiagramSelect';
-import ToolTip from '../components/ToolTip';
-import Sunburst from '../components/charts/Sunburst';
-import TreeMap from '../components/TreeMap';
-import CirclePack from '../components/CirclePack';
-
+import * as d3 from 'd3'
+import DiagramSelect from '../components/charts/DiagramSelect'
+import ToolTip from '../components/charts/ToolTip'
+import CirclePack from '../components/charts/CirclePack'
+import TreeMap from '../components/charts/TreeMap'
+import Sunburst from '../components/charts/Sunburst'
 export default {
   components: {
-    ToolTip,
-    Sunburst,
     DiagramSelect,
+    ToolTip,
     CirclePack,
-    TreeMap
+    TreeMap,
+    Sunburst
   },
   data() {
     return {
@@ -49,7 +48,6 @@ export default {
       // Totals are used for regions and country dimensions
       h.sum(v => v.value)
       h.sort((a, b) => d3.ascending(a, b))
-
       // https://github.com/d3/d3-hierarchy/blob/v1.1.9/README.md#node_each
       return h.each(function(d) {
         if (d.depth === 1) {
@@ -58,7 +56,16 @@ export default {
         i++
       })
     },
+    // `hsl(${(360 / count) * i}, 70%, 50%)`
     partition() {
+      // https://github.com/d3/d3-hierarchy/blob/master/README.md#partition
+      /*
+      partition adds:
+      node.x0 - the left edge of the rectangle
+      node.y0 - the top edge of the rectangle
+      node.x1 - the right edge of the rectangle
+      node.y1 - the bottom edge of the rectangle
+      */
       let i = -1
       let colors = this.colors
       let h = d3.hierarchy(this.nestedData, v => v.values)
@@ -106,8 +113,7 @@ export default {
     }
   },
   // https://github.com/thegoodideaco/visualizing-hierarchies/blob/master/datasets/populations.json
-  async mounted() {
-    // const url = await d3.json('/data/populations.json')
+  mounted() {
     const url = [
   {
     "key": "Afghanistan",
@@ -1497,17 +1503,14 @@ export default {
       v-model="selected"
       v-bind="{ select }"
     />
-
-    <TreeMap
-      v-if="selected === 'treemap'"
-      v-bind="{ data: treemap, width, height }"
-    />
-
     <CirclePack
       v-if="selected === 'pack'"
       v-bind="{ data: pack, width, height }"
     />
-
+    <TreeMap
+      v-if="selected === 'treemap'"
+      v-bind="{ data: treemap, width, height }"
+    />
     <Sunburst
       v-if="selected === 'sunburst'"
       v-bind="{ data: partition, radius }"

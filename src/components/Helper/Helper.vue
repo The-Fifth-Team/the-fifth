@@ -1,6 +1,6 @@
-<template>
+<!-- <template>
     <div :class="{ 'theme-helper': true, 'theme-helper-opened': opened }">
-        <section class="widget theme-helper-content">
+         <section class="widget theme-helper-content">
             <header class="theme-helper-header d-flex p-0">
                 <div class="theme-helper-toggler" @click="toggle">
                     <div class="theme-helper-spinner bg-warning text-white">
@@ -78,3 +78,4 @@ export default {
 </script>
 
 <style src="./Helper.scss" lang="scss" scoped />
+-->

@@ -199,6 +199,9 @@ export default {
   computed: {
     ...mapState('layout', ['chatOpen', 'chatNotificationMessageState']),
   },
+  // mounted: {
+  //   openMessages
+  // }
 };
 </script>
 

@@ -5,7 +5,7 @@
       <b-breadcrumb-item active>Dashboard</b-breadcrumb-item>
     </b-breadcrumb>
     <h1 class="page-title">Dashboard</h1>
-    <div class="m-auto">
+    <div>
       <b-row>
 
         <b-col lg="3" sm="6" xs="12" class="widgets">
@@ -34,18 +34,10 @@
             </Widget>
           </div>
         </b-col>
-        <!-- <b-col lg="3" sm="6" xs="12">
-          <div class="pb-xlg h-100">
-            <Widget class="h-100 mb-0 text-center" title="Depressed">
-              <div class="d-flex align-items-center mb-sm">
-
-              </div>
-            </Widget>
-          </div>
-        </b-col> -->
+        
       </b-row>
     </div>
-    <b-row>
+    <!-- <b-row>
       <b-col xs="12">
         <Widget
           title="<h5>Support <span class='fw-semi-bold'>Requests</span></h5>"
@@ -184,7 +176,7 @@
           </div>
         </Widget>
       </b-col>
-    </b-row>
+    </b-row> -->
   </div>
 </template>
 

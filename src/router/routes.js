@@ -18,7 +18,7 @@ import ChartsPage from '@/pages/Charts/Charts';
 
 // Ui
 import IconsPage from '@/pages/Icons/Icons';
-import NotificationsPage from '@/pages/Notifications/Notifications';
+// import NotificationsPage from '@/pages/Notifications/Notifications';
 
 
 const routes = [
@@ -58,9 +58,9 @@ const routes = [
         component: IconsPage,
       },
       {
-        path: 'notifications',
-        name: 'NotificationsPage',
-        component: NotificationsPage,
+        path: 'seccharts',
+        name: 'WhidaCharts',
+        component: () => import('../pages/WorldPopulation.vue'),
       },
       {
         path: 'tables',
