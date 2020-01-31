@@ -16,7 +16,7 @@
 </template>
 
 <script>
-// import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
@@ -29,16 +29,16 @@ export default {
   name: 'Layout',
   components: { Sidebar, Header, Chat, Helper },
   methods: {
-    // ...mapActions(
-    //   'layout', ['switchSidebar', 'handleSwipe', 'changeSidebarActive'],
-    // ),
+    ...mapActions(
+      'layout', ['switchSidebar', 'handleSwipe', 'changeSidebarActive'],
+    ),
   },
   computed: {
-    // ...mapState('layout', {
-    //   sidebarClose: state => state.sidebarClose,
-    //   sidebarStatic: state => state.sidebarStatic,
-    //   chatOpen: state => state.chatOpen,
-    // }),
+    ...mapState('layout', {
+      sidebarClose: state => state.sidebarClose,
+      sidebarStatic: state => state.sidebarStatic,
+      chatOpen: state => state.chatOpen,
+    }),
   },
   created() {
     const staticSidebar = JSON.parse(localStorage.getItem('sidebarStatic'));
