@@ -1,4 +1,4 @@
-// import isScreen from '@/core/screenHelper';
+import isScreen from '../core/screenHelper';
 
 export const MessageStates = {
   READ: "read",
@@ -51,9 +51,9 @@ export default {
       localStorage.sidebarStatic = nextState;
       state.sidebarStatic = nextState;
 
-      // if (!nextState && (isScreen('lg') || isScreen('xl'))) {
-      //   state.sidebarClose = true;
-      // }
+      if (!nextState && (isScreen('lg') || isScreen('xl'))) {
+        state.sidebarClose = true;
+      }
     },
     switchSidebar(state, value) {
       if (value) {

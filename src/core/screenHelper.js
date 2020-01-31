@@ -1,3 +1,4 @@
+// Provide a specific sizes for different screens
 const screens = {
   'xs-max': 543,
   'sm-min': 544,

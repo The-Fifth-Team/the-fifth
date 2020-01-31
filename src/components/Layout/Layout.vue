@@ -1,7 +1,6 @@
 <template>
 <div :class="{root: true, chatOpen, sidebarClose, sidebarStatic}">
   <Sidebar />
-  <Helper />
   <div class="wrap">
     <Header />
     <Chat />
@@ -21,13 +20,16 @@ import { mapState, mapActions } from 'vuex';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
 import Chat from '../../components/Chat/Chat';
-import Helper from '../../components/Helper/Helper';
 
 import './Layout.scss';
 
 export default {
   name: 'Layout',
-  components: { Sidebar, Header, Chat, Helper },
+  components: {
+    Sidebar,
+    Header,
+    Chat 
+  },
   methods: {
     ...mapActions(
       'layout', ['switchSidebar', 'handleSwipe', 'changeSidebarActive'],

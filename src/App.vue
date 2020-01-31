@@ -1,14 +1,25 @@
 <template>
-  <router-view></router-view>
+  <router-view />
 </template>
 
 <script>
 
 export default {
   name: 'app',
+  created() {
+    const currentPath = this.$router.history.current.path;
+
+    if (window.localStorage.getItem('authenticated') === 'false') {
+      this.$router.push('/login');
+    }
+
+    if (currentPath === '/' || currentPath === '/app') {
+      this.$router.push('/app/dashboard');
+    }
+  },
 }
 </script>
 
-<style>
+<style src="./styles/theme.scss" lang="scss">
 
 </style>
