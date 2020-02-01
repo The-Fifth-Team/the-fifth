@@ -37,59 +37,65 @@
         
       </b-row>
     </div>
-    <b-row>
-      <b-col lg=12 xs="12" class="my-col">
-        <Widget
-          title="<h5 class='py-4 text-center'>Add <span class='fw-semi-bold'>User</span> <i class='fa fa-plus'></i></h5>"
-          bodyClass="widget-form-overflow"
-          customHeader
-        >
-            <b-row class="my-1" :key="type">
-              <b-col class='my-2' sm="3">
-                <label> FirstName: </label>
-              </b-col>
-              <b-col class='my-2' sm="9">
-                <b-form-input :id="`type-${type}`" :type="type"></b-form-input>
-              </b-col>
-              <b-col class='my-2' sm="3">
-                <label> LastName: </label>
-              </b-col>
-              <b-col class='my-2' sm="9">
-                <b-form-input :id="`type-${type}`" type="text"></b-form-input>
-              </b-col>
-              <b-col class='my-2' sm="3">
-                <label> Email: </label>
-              </b-col>
-              <b-col class='my-2' sm="9">
-                <b-form-input :id="`type-${type}`" type="email"></b-form-input>
-              </b-col>
-              <b-col class='my-2' sm="3">
-                <label> Password: </label>
-              </b-col>
-              <b-col class='my-2' sm="9">
-                <b-form-input :id="`type-${type}`" type="password"></b-form-input>
-              </b-col>
-              <b-col class='my-2' sm="3">
-                <label> Date of Birth: </label>
-              </b-col>
-              <b-col class='my-2' sm="9">
-                <b-form-input :id="`type-${type}`" type="date"></b-form-input>
-              </b-col>
-            </b-row>
-        </Widget>
-      </b-col>
-    </b-row>
+      <Widget
+        bodyClass="widget-form-overflow"
+        customHeader
+      >
+       <b-row>
+          <b-col lg="6" xs="12" class="p-4">
+            <h3 class="text-center py-4"><strong>User Data</strong></h3>
+                <b-row class="">
+                  <b-col class='my-2' sm="3">
+                    <label> FirstName: </label>
+                  </b-col>
+                  <b-col class='my-2' sm="9">
+                    <b-form-input type="text"></b-form-input>
+                  </b-col>
+                  <b-col class='my-2' sm="3">
+                    <label> LastName: </label>
+                  </b-col>
+                  <b-col class='my-2' sm="9">
+                    <b-form-input type="text"></b-form-input>
+                  </b-col>
+                  <b-col class='my-2' sm="3">
+                    <label> Email: </label>
+                  </b-col>
+                  <b-col class='my-2' sm="9">
+                    <b-form-input type="email"></b-form-input>
+                  </b-col>
+                  <b-col class='my-2' sm="3">
+                    <label> Password: </label>
+                  </b-col>
+                  <b-col class='my-2' sm="9">
+                    <b-form-input type="password"></b-form-input>
+                  </b-col>
+                  <b-col class='my-2' sm="3">
+                    <label> Date of Birth: </label>
+                  </b-col>
+                  <b-col class='my-2' sm="9">
+                    <b-form-input type="date"></b-form-input>
+                  </b-col>
+                </b-row>
+          </b-col>
+          <b-col lg="6" xs="12" class="my-1">
+            <h3 class="text-center py-5"><strong>Upload Images</strong></h3>
+            <UploadImage></UploadImage>
+          </b-col>
+      </b-row>
+    </Widget>
     
   </div>
 </template>
 
 <script>
 import Widget from '../../components/Widget/Widget';
+import UploadImage from '../../components/UploadImage';
 // import { Chart } from 'highcharts-vue';
 
 export default {
   name: 'Dashboard',
   components: {
+    UploadImage,
     Widget,
     // highcharts: Chart
   },

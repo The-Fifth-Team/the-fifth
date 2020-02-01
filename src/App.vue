@@ -1,11 +1,18 @@
 <template>
   <router-view />
+  <!-- <div>
+    <UploadImage></UploadImage>
+  </div> -->
 </template>
 
 <script>
+  // import UploadImage from './components/UploadImage';
 
 export default {
   name: 'app',
+  components: {
+    // UploadImage
+  },
   created() {
     const currentPath = this.$router.history.current.path;
 
