@@ -1,0 +1,28 @@
+@import '../../styles/app';
+
+// .my-col {
+//   max-width: 89%;
+//   margin: auto;
+//   margin-left: 89px;
+// }
+
+// .widgets {
+//   margin-left: 90px;
+//   margin-top: 10px;
+// }
+
+table {
+  td, th {
+    font-weight: $font-weight-normal;
+  }
+
+  tbody tr {
+    &:nth-child(odd) {
+      background: $gray-100;
+    }
+
+    td {
+      min-width: 100px;
+    }
+  }
+}
