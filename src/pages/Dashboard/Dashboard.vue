@@ -8,7 +8,7 @@
     <div>
       <b-row>
 
-        <b-col lg="3" sm="6" xs="12" class="widgets">
+        <b-col lg="4" sm="6" xs="12" class="widgets">
           <div class="pb-xlg h-100">
             <Widget class="h-100 mb-0 text-center p-4" title="Happy">
               <img src="../../assets/img/happy.png" width="120px" alt="netural-face" />
@@ -17,7 +17,7 @@
           </div>
         </b-col>
 
-        <b-col lg="3" sm="6" xs="12" class="widgets">
+        <b-col lg="4" sm="6" xs="12" class="widgets">
           <div class="pb-xlg h-100">
             <Widget class="h-100 mb-0 text-center p-4" title="Netural">
               <img src="../../assets/img/netural.png" width="120px" alt="netural-face" />
@@ -26,7 +26,7 @@
           </div>
         </b-col>
 
-        <b-col lg="3" sm="6" xs="12" class="widgets">
+        <b-col lg="4" sm="6" xs="12" class="widgets">
           <div class="pb-xlg h-100">
             <Widget class="h-100 mb-0 text-center p-4" title="Sad">
               <img src='../../assets/img/sad.png' width="120px" alt="sad-face"/>
@@ -37,146 +37,49 @@
         
       </b-row>
     </div>
-    <!-- <b-row>
-      <b-col xs="12">
+    <b-row>
+      <b-col lg=12 xs="12" class="my-col">
         <Widget
-          title="<h5>Support <span class='fw-semi-bold'>Requests</span></h5>"
-          bodyClass="widget-table-overflow"
+          title="<h5 class='py-4 text-center'>Add <span class='fw-semi-bold'>User</span> <i class='fa fa-plus'></i></h5>"
+          bodyClass="widget-form-overflow"
           customHeader
         >
-          <div class="table-responsive">
-            <table class="table table-lg mb-0">
-              <thead>
-                <tr class="text-muted">
-                  <th>NAME</th>
-                  <th>EMAIL</th>
-                  <th>PRODUCT</th>
-                  <th>PRICE</th>
-                  <th>DATE</th>
-                  <th>CITY</th>
-                  <th>STATUS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="row in table"
-                  :key="row.id"
-                >
-                  <td>{{row.name}}</td>
-                  <td>{{row.email}}</td>
-                  <td>{{row.product}}</td>
-                  <td>{{row.price}}</td>
-                  <td>{{row.date}}</td>
-                  <td>{{row.city}}</td>
-                  <td>
-                    <b-button
-                      :variant="row.status === 'Pending'
-                        ? 'success'
-                        : row.status === 'Declined' ? 'danger' : 'info'"
-                      class="p-1 px-3 btn-xs"
-                    >
-                      {{row.status}}
-                    </b-button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <b-row class="my-1" :key="type">
+              <b-col class='my-2' sm="3">
+                <label> FirstName: </label>
+              </b-col>
+              <b-col class='my-2' sm="9">
+                <b-form-input :id="`type-${type}`" :type="type"></b-form-input>
+              </b-col>
+              <b-col class='my-2' sm="3">
+                <label> LastName: </label>
+              </b-col>
+              <b-col class='my-2' sm="9">
+                <b-form-input :id="`type-${type}`" type="text"></b-form-input>
+              </b-col>
+              <b-col class='my-2' sm="3">
+                <label> Email: </label>
+              </b-col>
+              <b-col class='my-2' sm="9">
+                <b-form-input :id="`type-${type}`" type="email"></b-form-input>
+              </b-col>
+              <b-col class='my-2' sm="3">
+                <label> Password: </label>
+              </b-col>
+              <b-col class='my-2' sm="9">
+                <b-form-input :id="`type-${type}`" type="password"></b-form-input>
+              </b-col>
+              <b-col class='my-2' sm="3">
+                <label> Date of Birth: </label>
+              </b-col>
+              <b-col class='my-2' sm="9">
+                <b-form-input :id="`type-${type}`" type="date"></b-form-input>
+              </b-col>
+            </b-row>
         </Widget>
       </b-col>
     </b-row>
-    <b-row>
-      <b-col lg="4" sm="6" xs="12">
-        <Widget
-          title="<h5 class='d-flex align-items-center pb-1'>
-            <span class='circle bg-primary mr-sm' style='font-size: 6px;'></span>
-            Statistic<span class='fw-normal ml-xs'>Light Blue</span>
-          </h4>"
-          bodyClass="p-0 mt"
-          customHeader
-        >
-          <h4 class="fw-semi-bold ml-lg mb-lg">4,232</h4>
-          <div class="d-flex border-top">
-            <div class="w-50 border-right p-3 px-4">
-              <div class="d-flex justify-content-between align-items-center"><h6>+830</h6>
-                <i class="la la-arrow-right text-success rotate-315" />
-              </div>
-              <p class="text-muted mb-0 mr">
-                <small>Registrations</small>
-              </p>
-            </div>
-            <div class="w-50 p-3 px-4">
-              <div class="d-flex justify-content-between align-items-center"><h6>4.5%</h6>
-                <i class="la la-arrow-right text-danger rotate-45" />
-              </div>
-              <p class="text-muted mb-0 mr">
-                <small>Bounce Rate</small>
-              </p>
-            </div>
-          </div>
-        </Widget>
-      </b-col>
-      <b-col lg="4" sm="6" xs="12">
-        <Widget
-          title="<h5 class='d-flex align-items-center pb-1'>
-            <span class='circle bg-warning mr-sm' style='font-size: 6px;'></span>
-            Statistic<span class='fw-normal ml-xs'>Sing App</span>
-          </h4>"
-          bodyClass="p-0 mt"
-          customHeader
-        >
-          <h4 class="fw-semi-bold ml-lg mb-lg">754</h4>
-          <div class="d-flex border-top">
-            <div class="w-50 border-right p-3 px-4">
-              <div class="d-flex justify-content-between align-items-center"><h6>+30</h6>
-                <i class="la la-arrow-right text-success rotate-315" />
-              </div>
-              <p class="text-muted mb-0 mr">
-                <small>Registrations</small>
-              </p>
-            </div>
-            <div class="w-50 p-3 px-4">
-              <div class="d-flex justify-content-between align-items-center"><h6>2.5%</h6>
-                <i class="la la-arrow-right text-success rotate-315" />
-              </div>
-              <p class="text-muted mb-0 mr">
-                <small>Bounce Rate</small>
-              </p>
-            </div>
-          </div>
-        </Widget>
-      </b-col>
-      <b-col lg="4" sm="6" xs="12">
-        <Widget
-          title="<h5 class='d-flex align-items-center pb-1'>
-            <span class='circle bg-warning mr-sm' style='font-size: 6px;'></span>
-            Statistic<span class='fw-normal ml-xs'>RNS</span>
-          </h4>"
-          bodyClass="p-0 mt"
-          customHeader
-        >
-          <h4 class="fw-semi-bold ml-lg mb-lg">1,025</h4>
-          <div class="d-flex border-top">
-            <div class="w-50 border-right p-3 px-4">
-              <div class="d-flex justify-content-between align-items-center"><h6>+230</h6>
-                <i class="la la-arrow-right text-success rotate-315" />
-              </div>
-              <p class="text-muted mb-0 mr">
-                <small>Registrations</small>
-              </p>
-            </div>
-            <div class="w-50 p-3 px-4">
-              <div class="d-flex justify-content-between align-items-center"><h6>21.5%</h6>
-                <i class="la la-arrow-right text-danger rotate-45" />
-              </div>
-              <p class="text-muted mb-0 mr">
-                <small>Bounce Rate</small>
-              </p>
-            </div>
-          </div>
-        </Widget>
-      </b-col>
-    </b-row> -->
+    
   </div>
 </template>
 
@@ -242,6 +145,17 @@ export default {
         city: 'Hanoverton',
         status: 'Sent',
       }],
+      types: [
+          'text',
+          'number',
+          'email',
+          'password',
+          'search',
+          'url',
+          'tel',
+          'date',
+          'time',
+        ]
     };
   },
   methods: {
