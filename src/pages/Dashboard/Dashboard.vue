@@ -154,7 +154,6 @@
         <b-col
           lg="4"
           xs="12"
-          class="my-1"
         >
           <h3 class="text-center py-5">
             <strong>Upload Image</strong>
@@ -164,7 +163,6 @@
         <b-col
           lg="4"
           xs="12"
-          class="my-1"
         >
           <h3 class="text-center py-5">
             <strong>Facial Discriptor</strong>
