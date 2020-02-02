@@ -53,7 +53,7 @@ export default {
           .then((faceDescriptors) => {
             axios({
                 method: 'post',
-                url: 'http://localhost:3000/',
+                url: 'http://localhost:3000/', // Why 3000 ?
                 data: {
                   faceDescriptors,
                   label
@@ -124,6 +124,6 @@ canvas {
     top: 0;
     left: 0;
 }
-.facial-discriptor-extractor {
-    }
+// .facial-discriptor-extractor {
+//     }
 </style>

@@ -1502,21 +1502,31 @@ export default {
     <ToolTip />
     <!-- <h1>World Population</h1> -->
     <b-row class="text-center w-100">
-      <b-col lg='12' xs='12' class='w-100'>
+      <b-col 
+        lg="12" 
+        xs="12"
+        class="w-100"
+      >
         <Widget>
           <CirclePack
             v-bind="{ data: pack, width, height }"
           />
         </Widget>
       </b-col>
-      <b-col lg='12' xs='12'>
+      <b-col
+        lg="12"
+        xs="12"
+      >
         <Widget>
           <TreeMap
             v-bind="{ data: treemap, width, height }"
           />
         </Widget>
       </b-col>
-      <b-col lg='12' xs='12'>
+      <b-col 
+        lg="12"
+        xs="12"
+      >
         <Widget>
           <Sunburst
             class="w-100"
