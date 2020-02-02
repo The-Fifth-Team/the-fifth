@@ -7,6 +7,9 @@ import ErrorPage from '@/pages/Error/Error';
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
 
+// Sec Charts
+import WorldPopulation from '../pages/WorldPopulation.vue';
+
 // Maps
 // import GoogleMapPage from '@/pages/Maps/Google';
 
@@ -20,12 +23,19 @@ import ChartsPage from '@/pages/Charts/Charts';
 import IconsPage from '@/pages/Icons/Icons';
 // import NotificationsPage from '@/pages/Notifications/Notifications';
 
+import ResetPassword from '@/pages/ResetPassword'
+
 
 const routes = [
   {
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/reset',
+    name: 'ResetPassword',
+    component: ResetPassword,
   },
   {
     path: '/error',
@@ -60,7 +70,7 @@ const routes = [
       {
         path: 'seccharts',
         name: 'WhidaCharts',
-        component: () => import('../pages/WorldPopulation.vue'),
+        component: WorldPopulation
       },
       {
         path: 'tables',
