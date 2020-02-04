@@ -21,8 +21,8 @@ Vue.config.productionTip = false
 Vue.use(VueApollo)
 
 const apolloClient = new ApolloClient({
-  link: createUploadLink({ uri: 'http://localhost:4000' }),
-  cache: new InMemoryCache()
+    link: createUploadLink({ uri: 'https://guarded-fortress.herokuapp.com' }),
+    cache: new InMemoryCache()
 })
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
@@ -40,7 +40,7 @@ Vue.config.productionTip = false;
 export const eventBus = new Vue()
 
 if (document.querySelector('#my-strictly-unique-vue-upload-multiple-image')) {
-  Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
+    Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
 }
 
 new Vue({
