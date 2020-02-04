@@ -75,7 +75,7 @@
         </b-col>
       </b-row>
     </div>
-    <Widget
+    <!-- <Widget
       body-class="widget-form-overflow"
       custom-header
     >
@@ -170,22 +170,31 @@
           <FacialDiscriptorExtractor />
         </b-col>
       </b-row>
+    </Widget> -->
+    <Widget>
+      <b-row>
+        <b-col>
+          <Horizontal />
+        </b-col>
+      </b-row>
     </Widget>
   </div>
 </template>
 
 <script>
 import Widget from '@/components/Widget/Widget';
-import UploadImage from '@/components/UploadImage';
-import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor'
+// import UploadImage from '@/components/UploadImage';
+// import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
+import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
 // import { Chart } from 'highcharts-vue';
 
 export default {
   name: 'Dashboard',
   components: {
-    UploadImage,
+    // UploadImage,
     Widget,
-    FacialDiscriptorExtractor
+    // FacialDiscriptorExtractor,
+    Horizontal
     // highcharts: Chart
   },
   data() {
@@ -240,17 +249,6 @@ export default {
         city: 'Hanoverton',
         status: 'Sent',
       }],
-      types: [
-          'text',
-          'number',
-          'email',
-          'password',
-          'search',
-          'url',
-          'tel',
-          'date',
-          'time',
-        ]
     };
   },
   methods: {

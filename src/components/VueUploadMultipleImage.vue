@@ -1,3 +1,4 @@
+/* eslint-disable vue/return-in-computed-property */
 <template>
   <div style="outline: none;">
     <div
@@ -193,15 +194,16 @@
 
 <script>
 import { forEach, findIndex, orderBy, cloneDeep } from 'lodash'
-// import Popper from 'vue-popperjs'
+import Popper from 'vue-popperjs'
 import 'vue-popperjs/dist/css/vue-popper.css'
 import VueImageLightboxCarousel from 'vue-image-lightbox-carousel'
-import UPLOAD_PHOTO from "../graphql/UploadPhoto";
+import UPLOAD_PHOTO from "../graphql/UploadPhoto.js";
 export default {
 
   name: 'VueUploadMultipleImage',
   components: {
-    // Popper,
+    // eslint-disable-next-line vue/no-unused-components
+    Popper,
     VueImageLightboxCarousel
   },
 
@@ -280,11 +282,12 @@ export default {
         return this.images.length ? this.images[0].path : ''
       }
     },
-    // imageDefault () {
-    //   if (this.images[this.currentIndexImage]) {
-    //     return this.images[this.currentIndexImage].default
-    //   }
-    // }
+    // eslint-disable-next-line vue/return-in-computed-property
+    imageDefault () {
+      if (this.images[this.currentIndexImage]) {
+        return this.images[this.currentIndexImage].default
+      }
+    }
   },
   watch: {
     dataImages: {
@@ -313,15 +316,16 @@ export default {
   },
   methods: {
     onUpload(){
-      if(this.file){
-        this.$apollo.mutate({
-        mutation: UPLOAD_PHOTO,
-        variables: {
-        photo: this.file
-      }
-    });
-      }else
-      alert("No File Selected");
+      console.log(this.$store.getters.getUserData)
+    //   if(this.file){
+    //     this.$apollo.mutate({
+    //     mutation: UPLOAD_PHOTO,
+    //      variables: {
+    //     photo: this.file
+    //   }
+    // });
+    //   }else
+    //   alert("No File Selected");
     },
     onDrop (e) {
       this.isDragover = false;
@@ -334,7 +338,7 @@ export default {
       if(!this.isValidNumberOfImages(files.length)){
         return false
       }
-      forEach(files, (value) => {
+      forEach(files, (value, index) => {
         this.createImage(value);
         if (!this.multiple) {
           return false
@@ -391,7 +395,7 @@ export default {
       if(!this.isValidNumberOfImages(files.length)){
         return false
       }
-      forEach(files, (value) => {
+      forEach(files, (value, index) => {
         this.createImage(value)
       });
       if (document.getElementById(this.idUpload)) {
@@ -406,7 +410,7 @@ export default {
       if(!this.isValidNumberOfImages(files.length)){
         return false
       }
-      forEach(files, (value) => {
+      forEach(files, (value, index) => {
         this.editImage(value)
       })
       if (document.getElementById(this.idEdit)) {
@@ -732,15 +736,15 @@ export default {
 .uploadButton {
   display: inline-block;
   margin-top: 3%;
-  /* margin-left: 33%; */
+  margin-left: 33%;
   border-radius: 4px;
-  background-color: #ffc247;
+  background-color: #f4511e;
   border: none;
-  color: black;
+  color: #FFFFFF;
   text-align: center;
   font-size: 10px;
   padding: 5px;
-  width: 100%;
+  width: 70px;
   transition: all 0.5s;
   cursor: pointer;
 }

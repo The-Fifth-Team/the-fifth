@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="facial-discriptor-extractor">
-    <b-col 
+    <!-- <b-col 
       sm="8"
       xs="12"
       class="m-auto"
@@ -10,7 +10,7 @@
         size="sm"
         placeholder="Enter User name"
       />
-    </b-col> <br>
+    </b-col> <br> -->
 
     <b-col
       sm="8"
@@ -73,7 +73,8 @@ export default {
 
   },
   methods: {
-    extractDiscriptors: () => {
+    extractDiscriptors: function() {
+      const that = this
       const imageUpload = document.getElementById('imageUpload')
 
       Promise.all([
@@ -84,32 +85,14 @@ export default {
       ]).then(start)
 
       async function start() {
-        var label = document.getElementById("name").value
         addFace(imageUpload.files)
           .then((faceDescriptors) => {
-            // console.log(faceDescriptors)
-            // axios({
-            //     method: 'post',
-            //     url: 'http://localhost:3000/',
-            //     data: {
-            //       faceDescriptors,
-            //       label
-            //     },
-            //     headers: {
-            //       'Content-Type': 'application/json'
-            //     }
-            //   })
-            //   .then(function(response) {
-            //     console.log({
-            //       response
-            //     });
-            //   })
-            //   .catch(function(error) {
-            //     console.log({
-            //       error
-            //     });
-            //   });
-            //document.body.append('Loaded')
+            that.$store.commit(
+              'addDescriptor', 
+              faceDescriptors.map(elm => {
+                return elm.descriptor;
+              })
+            )
           })
       }
 
