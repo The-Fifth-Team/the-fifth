@@ -6,7 +6,7 @@
       class="m-auto"
     >
       <b-form-input
-        id="input-small name"
+        id="name"
         size="sm"
         placeholder="Enter User name"
       />
@@ -87,27 +87,28 @@ export default {
         var label = document.getElementById("name").value
         addFace(imageUpload.files)
           .then((faceDescriptors) => {
-            axios({
-                method: 'post',
-                url: 'http://localhost:3000/',
-                data: {
-                  faceDescriptors,
-                  label
-                },
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              })
-              .then(function(response) {
-                console.log({
-                  response
-                });
-              })
-              .catch(function(error) {
-                console.log({
-                  error
-                });
-              });
+            // console.log(faceDescriptors)
+            // axios({
+            //     method: 'post',
+            //     url: 'http://localhost:3000/',
+            //     data: {
+            //       faceDescriptors,
+            //       label
+            //     },
+            //     headers: {
+            //       'Content-Type': 'application/json'
+            //     }
+            //   })
+            //   .then(function(response) {
+            //     console.log({
+            //       response
+            //     });
+            //   })
+            //   .catch(function(error) {
+            //     console.log({
+            //       error
+            //     });
+            //   });
             //document.body.append('Loaded')
           })
       }
