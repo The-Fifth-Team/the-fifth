@@ -3,7 +3,7 @@ import Login from '@/pages/Login/Login';
 import ErrorPage from '@/pages/Error/Error';
 // Core
 // import TypographyPage from '@/pages/Typography/Typography';
-
+import WorldPopulation from'../pages/WorldPopulation.vue'
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
 
@@ -60,7 +60,7 @@ const routes = [
       {
         path: 'seccharts',
         name: 'WhidaCharts',
-        component: () => import('../pages/WorldPopulation.vue'),
+        component: WorldPopulation
       },
       {
         path: 'tables',
