@@ -1,22 +1,31 @@
-<template lang="html">
-  <section class="facial-discriptor-extractor">
-    <!-- <b-col 
-      sm="8"
-      xs="12"
-      class="m-auto"
-    >
-      <b-form-input
-        id="name"
-        size="sm"
-        placeholder="Enter User name"
-      />
-    </b-col> <br> -->
-
+<template
+  ref="formContainer"
+  lang="html"
+>
+  <section
+    class="facial-discriptor-extractor"
+  >
     <b-col
       sm="8"
       xs="12"
       class="m-auto"
     >
+      <sweetalert-icon
+        v-if="discriptored"
+        icon="success"
+      />
+
+      <sweetalert-icon
+        v-if="descriptoring"
+        icon="loading"
+      />
+
+      <div v-if="error">
+        <h3 class="text-center"><strong>Please Pick images</strong></h3>
+        <sweetalert-icon  
+          icon="warning"
+        />
+      </div>
       <b-form-file 
         id="imageUpload"
         class="mt-3"
@@ -55,15 +64,19 @@
 </template>
 
 <script lang="js">
-import * as faceapi from "../../public/face-api.min.js"
-const axios = require('axios');
+import * as faceapi from "../../public/face-api.min.js";
+import SuccessComponent from '../components/AnimationComponents/SuccessComponent'
+import axios from 'axios';
+
 
 export default {
   name: 'FacialDiscriptorExtractor',
   props: [],
   data() {
     return {
-
+      discriptored: false,
+      descriptoring: false,
+      error: false,
     }
   },
   computed: {
@@ -74,8 +87,30 @@ export default {
   },
   methods: {
     extractDiscriptors: function() {
-      const that = this
       const imageUpload = document.getElementById('imageUpload')
+      const that = this
+      
+      if ( imageUpload.files.length === 0 ) {
+        this.error = true;
+        setTimeout(() => {
+          this.error = false
+        }, 1500);
+      }
+      this.error ? null : this.descriptoring = true;
+
+      // document.body.style.opacity = ''
+      // const loader = this.$loading.show({
+      //   container: this.$refs.formContainer,
+      //   canCancel: false,
+      //   color: 'green',
+      //   loader: 'dots'
+      //   // onCancel: this.onCancel,
+      // },{
+      //   // before: this.$createElement(),
+      //   // after: this.$createElement('<template><sweetalert-icon icon="success" /></template>')
+      // }
+      // );
+      
 
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
@@ -93,7 +128,12 @@ export default {
                 return elm.descriptor;
               })
             )
-            console.log('Done')
+            
+            that.discriptored = !that.discriptored;
+            that.descriptoring = !that.descriptoring;
+            setTimeout(() => {
+              that.discriptored = !that.discriptored;
+            }, 2000);
           })
       }
 

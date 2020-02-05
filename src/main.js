@@ -16,6 +16,9 @@ import { createUploadLink } from 'apollo-upload-client'
 import VueApollo from 'vue-apollo'
 
 
+import SweetAlertIcons from 'vue-sweetalert-icons';
+Vue.use(SweetAlertIcons);
+
 Vue.config.productionTip = false
 
 Vue.use(VueApollo)
@@ -27,7 +30,6 @@ const apolloClient = new ApolloClient({
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
 })
-
 
 Vue.use(BootstrapVue);
 Vue.use(VueTouch);
