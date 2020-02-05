@@ -271,12 +271,14 @@ export default {
           this.$apollo.mutate({
             mutation: uploadPhotoMutation,
             variables: {
-              firstName,
-              lastName,
-              age,
-              gender,
-              descriptors,
-              photo
+              data: {
+                firstName,
+                lastName,
+                age,
+                gender,
+                descriptors,
+                photo
+              }
             }
           })
           console.log('NO ERROR')
