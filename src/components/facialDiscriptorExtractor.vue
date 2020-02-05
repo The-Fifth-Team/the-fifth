@@ -93,6 +93,7 @@ export default {
                 return elm.descriptor;
               })
             )
+            console.log('Done')
           })
       }
 

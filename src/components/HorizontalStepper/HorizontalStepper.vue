@@ -83,7 +83,7 @@
         :class="['stepper-button next', !canContinue ? 'deactivated' : '']"
         @click="nextStep()"
       >
-        <span>{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
+        <span @click="finalClick">{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
         <i class="material-icons">keyboard_arrow_right</i>
       </div>
     </div>
@@ -255,6 +255,36 @@ export default {
     changeNextBtnValue(payload) {
       this.nextButton[this.currentStep.name] = payload.nextBtnValue;
       this.$forceUpdate();
+    },
+    finalClick (e) {
+      if (e.target.innerText === 'Finish') {
+        let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
+        if ( 
+          this.file
+          && firstName !== ''
+          && lastName  !== ''
+          && age !== 0
+          && gender !== ''
+          && descriptors.length !== 0
+          && photo
+        ) {
+          this.$apollo.mutate({
+            mutation: UPLOAD_PHOTO,
+            variables: {
+              firstName,
+              lastName,
+              age,
+              gender,
+              descriptors,
+              photo
+            }
+          })
+          console.log('NO ERROR')
+          console.log(this.$store.getters.getUserData)
+        } else {
+          console.log('ERROR')
+        }
+      }
     },
     init() {
       // Initiate stepper

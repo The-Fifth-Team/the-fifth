@@ -79,31 +79,29 @@
                 class="my-2"
                 sm="9"
               >
-                <input
-                  value=""
+                <select
                   name="gender"
-                  type="text"
-                  required
-                  @input="handleChange"
+                  @input="addGender"
                 >
-              </b-col>
-              <b-col
-                class="my-2"
-                sm="3"
-              >
-                <label> Date of Birth: </label>
-              </b-col>
-              <b-col
-                class="my-2"
-                sm="9"
-              >
-                <input
-                  value=""
-                  name="dateOfBirth"
-                  type="date"
-                  required
-                  @input="handleChange"
-                >
+                  <option
+                    name="Option"
+                    value="Select One"
+                  >
+                    Chose One ...
+                  </option>                    
+                  <option
+                    name="gender"
+                    value=""
+                  >
+                    Male
+                  </option>
+                  <option
+                    name="gender"
+                    value=""
+                  >
+                    Female
+                  </option>
+                </select>
               </b-col>
             </b-row>
           </form>
@@ -135,6 +133,11 @@ import { mapState } from 'vuex'
     methods: {
       handleChange (event) {
         this.$store.commit('handleChange', event)
+      },
+      addGender (event) {
+        if (event.target.selectedOptions[0].label !== 'Chose One ...') {
+          this.$store.commit('addGender', event.target.selectedOptions[0].label)
+        }
       }
     }
 }

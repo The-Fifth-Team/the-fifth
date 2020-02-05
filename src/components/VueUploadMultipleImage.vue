@@ -315,17 +315,33 @@ export default {
     this.images = cloneDeep(this.dataImages)
   },
   methods: {
-    onUpload(){
-      console.log(this.$store.getters.getUserData)
-    //   if(this.file){
-    //     this.$apollo.mutate({
-    //     mutation: UPLOAD_PHOTO,
-    //      variables: {
-    //     photo: this.file
-    //   }
-    // });
-    //   }else
-    //   alert("No File Selected");
+    onUpload () {
+      this.$store.commit('addImage', this.file);
+      // let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
+      // if ( 
+      //   this.file
+      //   && firstName !== ''
+      //   && lastName  !== ''
+      //   && age !== 0
+      //   && gender !== ''
+      //   && descriptors.length !== 0
+      // ) {
+      //   this.$apollo.mutate({
+      //     mutation: UPLOAD_PHOTO,
+      //     variables: {
+      //       firstName: this.$store.getters.getUserData.firstName,
+      //       lastName: this.$store.getters.getUserData.lastName,
+      //       age: this.$store.getters.getUserData.age,
+      //       gender: this.$store.getters.getUserData.gender,
+      //       descriptors: this.$store.getters.getUserData.descriptors,
+      //       photo: this.file
+      //     }
+      //   })
+      //   console.log('NO ERROR')
+      //   console.log(this.$store.getters.getUserData)
+      // } else {
+      //   console.log('ERROR')
+      // }
     },
     onDrop (e) {
       this.isDragover = false;

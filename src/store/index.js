@@ -15,26 +15,29 @@ export default new Vuex.Store({
       lastName: '',
       age: 0,
       gender: '',
-      dateOfBirth: '',
-      descriptors: []
+      descriptors: [],
+      photo: File,
     }
   },
   mutations: {
     handleChange (state, event) {
       state.userData[event.target.name] = event.target.value;
       // The data is saved in the state.userData
-      console.log(state.userData)
     },
     addDescriptor (state, description) {
-
       state.userData.descriptors = description;
-      console.log(state.userData)
+      // console.log(state.userData)
+    },
+    addImage (state, image) {
+      state.userData.photo = image;
+    },
+    addGender (state, event) {
+      state.userData.gender = event;
     }
   },
   getters: {
-    getUserData () {
-      console.log($store)
-      return this.state.userData
+    getUserData (state) {
+      return state.userData
     }
   }
 });
