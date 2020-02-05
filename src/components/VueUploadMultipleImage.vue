@@ -197,7 +197,7 @@ import { forEach, findIndex, orderBy, cloneDeep } from 'lodash'
 import Popper from 'vue-popperjs'
 import 'vue-popperjs/dist/css/vue-popper.css'
 import VueImageLightboxCarousel from 'vue-image-lightbox-carousel'
-import UPLOAD_PHOTO from "../graphql/UploadPhoto.js";
+import uploadPhotoMutation from "../graphql/Mutations.js";
 export default {
 
   name: 'VueUploadMultipleImage',
