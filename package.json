@@ -66,7 +66,7 @@
     "root": true,
     "env": {
       "node": true
-    },
+    }},
     "dependencies": {
         "animate.css": "^3.6.1",
         "apexcharts": "^3.8.6",
