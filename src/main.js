@@ -16,6 +16,9 @@ import { createUploadLink } from 'apollo-upload-client'
 import VueApollo from 'vue-apollo'
 
 
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+
 Vue.config.productionTip = false
 
 Vue.use(VueApollo)
@@ -28,7 +31,7 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient
 })
 
-
+Vue.use(Loading)
 Vue.use(BootstrapVue);
 Vue.use(VueTouch);
 Vue.use(Trend);
