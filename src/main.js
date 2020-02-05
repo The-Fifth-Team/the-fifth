@@ -21,8 +21,8 @@ Vue.config.productionTip = false
 Vue.use(VueApollo)
 
 const apolloClient = new ApolloClient({
-  link: createUploadLink({ uri: 'http://localhost:4000' }),
-  cache: new InMemoryCache()
+    link: createUploadLink({ uri: 'https://guarded-fortress.herokuapp.com' }),
+    cache: new InMemoryCache()
 })
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient

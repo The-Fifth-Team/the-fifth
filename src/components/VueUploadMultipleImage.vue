@@ -428,15 +428,15 @@ export default {
       }
       forEach(files, (value, index) => {
         this.editImage(value)
-      })
+      });
       if (document.getElementById(this.idEdit)) {
         document.getElementById(this.idEdit).value = ''
       }
     },
     changeHighlight (currentIndex) {
-      this.currentIndexImage = currentIndex
-      let arr = this.images
-      this.images = []
+      this.currentIndexImage = currentIndex;
+      let arr = this.images;
+      this.images = [];
       arr.map((item, index) => {
         if (currentIndex === index) {
           item.highlight = 1
@@ -444,7 +444,7 @@ export default {
           item.highlight = 0
         }
         return item
-      })
+      });
       this.images = arr
     },
     markIsPrimary (currentIndex) {
