@@ -10,6 +10,22 @@
       xs="12"
       class="m-auto"
     >
+      <sweetalert-icon
+        v-if="discriptored"
+        icon="success"
+      />
+
+      <sweetalert-icon
+        v-if="descriptoring"
+        icon="loading"
+      />
+
+      <div v-if="error">
+        <h3 class="text-center"><strong>Please Pick images</strong></h3>
+        <sweetalert-icon  
+          icon="warning"
+        />
+      </div>
       <b-form-file 
         id="imageUpload"
         class="mt-3"
@@ -48,7 +64,8 @@
 </template>
 
 <script lang="js">
-import * as faceapi from "../../public/face-api.min.js"
+import * as faceapi from "../../public/face-api.min.js";
+import SuccessComponent from '../components/AnimationComponents/SuccessComponent'
 import axios from 'axios';
 
 
@@ -57,7 +74,9 @@ export default {
   props: [],
   data() {
     return {
-
+      discriptored: false,
+      descriptoring: false,
+      error: false,
     }
   },
   computed: {
@@ -70,18 +89,27 @@ export default {
     extractDiscriptors: function() {
       const imageUpload = document.getElementById('imageUpload')
       const that = this
-
-      if ( imageUpload.files.length === 0 ) {
-        return alert('Please Add Pics')
-      }
       
-      // console.log(imageUpload.files)
-      const loader = this.$loading.show({
-        // Optional parameters
-        container: this.$refs.formContainer,
-        canCancel: false,
-        // onCancel: this.onCancel,
-      });
+      if ( imageUpload.files.length === 0 ) {
+        this.error = true;
+        setTimeout(() => {
+          this.error = false
+        }, 1500);
+      }
+      this.error ? null : this.descriptoring = true;
+
+      // document.body.style.opacity = ''
+      // const loader = this.$loading.show({
+      //   container: this.$refs.formContainer,
+      //   canCancel: false,
+      //   color: 'green',
+      //   loader: 'dots'
+      //   // onCancel: this.onCancel,
+      // },{
+      //   // before: this.$createElement(),
+      //   // after: this.$createElement('<template><sweetalert-icon icon="success" /></template>')
+      // }
+      // );
       
 
       Promise.all([
@@ -100,8 +128,12 @@ export default {
                 return elm.descriptor;
               })
             )
-            console.log('Done')
-            loader.hide()
+            
+            that.discriptored = !that.discriptored;
+            that.descriptoring = !that.descriptoring;
+            setTimeout(() => {
+              that.discriptored = !that.discriptored;
+            }, 2000);
           })
       }
 
