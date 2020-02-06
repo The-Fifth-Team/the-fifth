@@ -186,6 +186,7 @@ import Widget from '@/components/Widget/Widget';
 // import UploadImage from '@/components/UploadImage';
 // import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
 import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
+// import LoginCamera from '../../components/Cameras/LoginCamera'
 // import { Chart } from 'highcharts-vue';
 
 export default {

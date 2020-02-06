@@ -174,13 +174,6 @@
         @change="editFieldChange"
       >
     </div>
-    <button
-      class="uploadButton"
-      style="vertical-align:middle"
-      @click="onUpload"
-    >
-      <span>Upload</span>
-    </button> <!--HERE -->
     <vue-image-lightbox-carousel
       ref="lightbox"
       :show="showLightbox"
@@ -315,34 +308,6 @@ export default {
     this.images = cloneDeep(this.dataImages)
   },
   methods: {
-    onUpload () {
-      this.$store.commit('addImage', this.file);
-      // let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
-      // if ( 
-      //   this.file
-      //   && firstName !== ''
-      //   && lastName  !== ''
-      //   && age !== 0
-      //   && gender !== ''
-      //   && descriptors.length !== 0
-      // ) {
-      //   this.$apollo.mutate({
-      //     mutation: UPLOAD_PHOTO,
-      //     variables: {
-      //       firstName: this.$store.getters.getUserData.firstName,
-      //       lastName: this.$store.getters.getUserData.lastName,
-      //       age: this.$store.getters.getUserData.age,
-      //       gender: this.$store.getters.getUserData.gender,
-      //       descriptors: this.$store.getters.getUserData.descriptors,
-      //       photo: this.file
-      //     }
-      //   })
-      //   console.log('NO ERROR')
-      //   console.log(this.$store.getters.getUserData)
-      // } else {
-      //   console.log('ERROR')
-      // }
-    },
     onDrop (e) {
       this.isDragover = false;
       e.stopPropagation();
@@ -417,6 +382,8 @@ export default {
       if (document.getElementById(this.idUpload)) {
         document.getElementById(this.idUpload).value = []
       }
+      this.$store.commit('addImage', this.file);
+      console.log(this.$store.getters.getUserData)
     },
     editFieldChange (e) {
       let files = e.target.files || e.dataTransfer.files
@@ -432,6 +399,8 @@ export default {
       if (document.getElementById(this.idEdit)) {
         document.getElementById(this.idEdit).value = ''
       }
+      this.$store.commit('addImage', this.file);
+      console.log(this.$store.getters.getUserData)
     },
     changeHighlight (currentIndex) {
       this.currentIndexImage = currentIndex;
@@ -474,6 +443,7 @@ export default {
         }
         this.file = null;
       }, this.images)
+      this.$store.commit('addImage', null)
     },
     openGallery(index) {
       this.showLightbox = true

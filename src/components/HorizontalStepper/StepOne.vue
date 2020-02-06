@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="step-one">
+  <section class="step-one bg-dark">
     <Widget
       body-class="widget-form-overflow"
       custom-header
@@ -10,9 +10,9 @@
           xs="12"
           class="m-auto w-100 p-4"
         >
-          <h3 class="text-center py-4">
+          <!-- <h3 class="text-center py-4">
             <strong>User Data</strong>
-          </h3>
+          </h3> -->
           <form>
             <b-row>
               <b-col
@@ -26,6 +26,7 @@
                 sm="9"
               >
                 <input
+                  class="form-control"
                   value=""
                   name="firstName"
                   type="text"
@@ -44,6 +45,7 @@
                 sm="9"
               >
                 <input
+                  class="form-control"
                   value=""
                   name="lastName"
                   type="text"
@@ -62,9 +64,10 @@
                 sm="9"
               >
                 <input
+                  class="form-control"
                   value=""
                   name="age"
-                  type="text"
+                  type="number"
                   required
                   @input="handleChange"
                 >
@@ -80,22 +83,26 @@
                 sm="9"
               >
                 <select
+                  class="btn btn-primary dropdown-toggle dropdown-toggle-split"
                   name="gender"
                   @input="addGender"
                 >
                   <option
+                    class="dropdown-item"
                     name="Option"
                     value="Select One"
                   >
                     Chose One ...
                   </option>                    
                   <option
+                    class="dropdown-item"
                     name="gender"
                     value=""
                   >
                     Male
                   </option>
                   <option
+                    class="dropdown-item"
                     name="gender"
                     value=""
                   >
@@ -113,9 +120,11 @@
 
 <script lang="js">
 import { mapState } from 'vuex'
+import Widget from '../../components/Widget/Widget'
 
   export default  {
     name: 'StepOne',
+    components: { Widget },
     props: [],
     // eslint-disable-next-line vue/no-shared-component-data
     data () {

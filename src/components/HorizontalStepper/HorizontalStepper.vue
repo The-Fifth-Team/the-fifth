@@ -27,7 +27,9 @@
               </i>
             </div>
             <div class="step-title">
-              <h4 class="text-center">{{ step.title }}</h4>
+              <h4 class="text-center">
+                {{ step.title }}
+              </h4>
               <h5 class="step-subtitle">
                 {{ step.subtitle }}
               </h5>
@@ -44,6 +46,18 @@
       </div>
     </div>
     <div class="content">
+      <div v-if="!completedForm">
+        <h3 class="text-center">
+          <strong>Please Fill all Information</strong>
+        </h3>
+        <sweetalert-icon
+          icon="error" 
+        />
+      </div>
+      <sweetalert-icon
+        v-if="formSubmitted"
+        icon="success"
+      />
       <transition
         :enter-active-class="enterAnimation"
         :leave-active-class="leaveAnimation"
@@ -156,6 +170,8 @@ export default {
       nextButton: {},
       canContinue: true,
       finalStep: true,
+      completedForm: true,
+      formSubmitted: false,
       keepAliveData: this.keepAlive
     };
   },
@@ -241,6 +257,7 @@ export default {
           this.nextStepAction()
         }
       });
+      // console.log(this.nextButton.second)
     },
     backStep() {
       this.$emit("clicking-back");
@@ -260,14 +277,20 @@ export default {
       if (e.target.innerText === 'Finish') {
         let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
         if ( 
-          this.file
-          && firstName !== ''
+          firstName !== ''
           && lastName  !== ''
           && age !== 0
           && gender !== ''
           && descriptors.length !== 0
-          && photo
+          && !!photo
         ) {
+          // console.log(firstName !== ''
+          // && lastName  !== ''
+          // && age !== ''
+          // && gender !== ''
+          // && descriptors.length !== 0
+          // && photo)
+          // console.log(!!photo)
           this.$apollo.mutate({
             mutation: uploadPhotoMutation,
             variables: {
@@ -281,10 +304,17 @@ export default {
               }
             }
           })
-          console.log('NO ERROR')
+          this.formSubmitted = !this.formSubmitted;
+          setTimeout(() => {
+            this.formSubmitted = !this.formSubmitted;
+          }, 1500);
           console.log(this.$store.getters.getUserData)
         } else {
-          console.log('ERROR')
+          console.log(photo)
+          this.completedForm = !this.completedForm;
+          setTimeout(() => {
+            this.completedForm = !this.completedForm;
+          }, 1500);
         }
       }
     },

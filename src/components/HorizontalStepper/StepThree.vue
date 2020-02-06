@@ -4,9 +4,6 @@
       lg="12"
       xs="12"
     >
-      <h3 class="text-center py-5">
-        <strong>Upload Image</strong>
-      </h3>
       <UploadImage />
     </b-col>
   </section>

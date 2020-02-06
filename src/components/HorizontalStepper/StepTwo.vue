@@ -4,9 +4,6 @@
       lg="12"
       xs="12"
     >
-      <h3 class="text-center py-5">
-        <strong>Facial Discriptor</strong>
-      </h3>
       <FacialDiscriptorExtractor />
     </b-col>
   </section>
