@@ -175,7 +175,7 @@ export default {
             type="number"
             step="5"
             min="5"
-          />
+          >
         </label>
       </div>
     </div>

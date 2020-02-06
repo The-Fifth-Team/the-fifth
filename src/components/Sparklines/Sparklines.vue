@@ -1,5 +1,5 @@
 <template>
-<div></div>
+  <div />
   <!-- <apexchart class="sparkline-chart" style="display: inline-block" :type="type" :height="height" :width="width" :options="sparkOptions" :series="data"/> -->
 </template>
 

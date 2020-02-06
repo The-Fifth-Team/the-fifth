@@ -17,6 +17,7 @@ import VueApollo from 'vue-apollo'
 
 
 import SweetAlertIcons from 'vue-sweetalert-icons';
+import './registerServiceWorker'
 Vue.use(SweetAlertIcons);
 
 Vue.config.productionTip = false
@@ -44,7 +45,7 @@ export const eventBus = new Vue()
 // if (document.querySelector('#my-strictly-unique-vue-upload-multiple-image')) {
 // console.log(document.querySelector('#my-strictly-unique-vue-upload-multiple-image'))
 // }
-  
+
 Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
 
 new Vue({
