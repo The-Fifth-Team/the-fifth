@@ -46,18 +46,24 @@
       </div>
     </div>
     <div class="content">
-      <div v-if="!completedForm">
+      <!-- <div v-if="!completedForm">
         <h3 class="text-center">
           <strong>Please Fill all Information</strong>
         </h3>
         <sweetalert-icon
           icon="error" 
         />
+      </div> -->
+      <div v-if="!completedForm">
+        <sweetalert-icon
+          icon="error"
+        />
       </div>
-      <sweetalert-icon
-        v-if="formSubmitted"
-        icon="success"
-      />
+      <div v-else-if="isDone">
+        <sweetalert-icon
+          icon="success"
+        />
+      </div>
       <transition
         :enter-active-class="enterAnimation"
         :leave-active-class="leaveAnimation"
@@ -172,7 +178,8 @@ export default {
       finalStep: true,
       completedForm: true,
       formSubmitted: false,
-      keepAliveData: this.keepAlive
+      keepAliveData: this.keepAlive,
+      isDone: false
     };
   },
   computed: {
@@ -284,13 +291,6 @@ export default {
           && descriptors.length !== 0
           && !!photo
         ) {
-          // console.log(firstName !== ''
-          // && lastName  !== ''
-          // && age !== ''
-          // && gender !== ''
-          // && descriptors.length !== 0
-          // && photo)
-          // console.log(!!photo)
           this.$apollo.mutate({
             mutation: uploadPhotoMutation,
             variables: {
@@ -304,17 +304,15 @@ export default {
               }
             }
           })
-          this.formSubmitted = !this.formSubmitted;
-          setTimeout(() => {
-            this.formSubmitted = !this.formSubmitted;
-          }, 1500);
           console.log(this.$store.getters.getUserData)
+          document.getElementById('isUploaded').style.display = 'none';
+          this.completedForm = !this.completedForm;
+          this.isDone = !this.isDone;
         } else {
           console.log(photo)
           this.completedForm = !this.completedForm;
-          setTimeout(() => {
-            this.completedForm = !this.completedForm;
-          }, 1500);
+          this.isDone = !this.isDone;
+          document.getElementById('isUploaded').style.display = 'block';
         }
       }
     },

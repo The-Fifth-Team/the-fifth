@@ -39,6 +39,7 @@ import UploadImage from '@/components/UploadImage';
 
 <style scoped lang="scss">
   .step-three {
-
+    // padding-top: .1em;
+    padding-bottom: 2.3em;
   }
 </style>

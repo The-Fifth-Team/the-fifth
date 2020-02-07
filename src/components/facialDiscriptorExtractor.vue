@@ -39,7 +39,7 @@
         class="text-center"
         style="padding: 63.5px;"
       >
-        Oh no 😢
+        add 3 images For descriptions
       </h1>
       <b-form-file 
         id="imageUpload"
@@ -146,9 +146,9 @@ export default {
             
             that.discriptored = !that.discriptored;
             that.descriptoring = !that.descriptoring;
-            setTimeout(() => {
-              that.discriptored = !that.discriptored;
-            }, 2000);
+            // setTimeout(() => {
+            //   that.discriptored = !that.discriptored;
+            // }, 2000);
           })
       }
 

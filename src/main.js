@@ -38,7 +38,7 @@ Vue.use(Trend);
 Vue.use(Toasted, {duration: 10000});
 Vue.component('apexchart', VueApexCharts);
 
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 
 export const eventBus = new Vue()
 
