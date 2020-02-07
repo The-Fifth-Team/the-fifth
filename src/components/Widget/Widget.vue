@@ -1,28 +1,61 @@
 <template>
-  <section :class="{
-    widget: true,
-    className,
-    collapsed: state === 'collapse',
-    fullscreened: state === 'fullscreen',
-    loading: fetchingData
-  }" ref="widget">
-    <h5 v-if="title && typeof title === 'string' && !customHeader" class="title">{{title}}</h5>
-    <header v-if="title && customHeader" class="title" v-html="title"></header>
-    <div v-if="!customControls && mainControls"
-      class="widgetControls widget-controls">
-      <a v-if="settings || settingsInverse" href="#"><i class="la la-cog"></i></a>
-      <a @click="loadWidgster($event)" v-if="refresh" href="#" :id="`reloadId-${randomId}`">
-        <strong v-if="typeof refresh === 'string'" class="text-gray-light">{{refresh}}</strong>
-        <i v-else class="la la-refresh"></i>
-          <b-tooltip
-            v-if="showTooltip"
-            :placement="tooltipPlacement"
-            :target="`reloadId-${randomId}`"
-          >Reload
-          </b-tooltip>
+  <section
+    ref="widget"
+    :class="{
+      widget: true,
+      className,
+      collapsed: state === 'collapse',
+      fullscreened: state === 'fullscreen',
+      loading: fetchingData
+    }"
+  >
+    <h5
+      v-if="title && typeof title === 'string' && !customHeader"
+      class="title"
+    >
+      {{ title }}
+    </h5>
+    <header
+      v-if="title && customHeader"
+      class="title"
+      v-html="title"
+    />
+    <div
+      v-if="!customControls && mainControls"
+      class="widgetControls widget-controls"
+    >
+      <a
+        v-if="settings || settingsInverse"
+        href="#"
+      ><i class="la la-cog" /></a>
+      <a
+        v-if="refresh"
+        :id="`reloadId-${randomId}`"
+        href="#"
+        @click="loadWidgster($event)"
+      >
+        <strong
+          v-if="typeof refresh === 'string'"
+          class="text-gray-light"
+        >{{ refresh }}</strong>
+        <i
+          v-else
+          class="la la-refresh"
+        />
+        <b-tooltip
+          v-if="showTooltip"
+          :placement="tooltipPlacement"
+          :target="`reloadId-${randomId}`"
+        >Reload
+        </b-tooltip>
       </a>
-      <a @click="changeState($event, 'fullscreen')" v-if="fullscreen && state !== 'fullscreen'" href="#" :id="`fullscreenId-${randomId}`">
-        <i class="glyphicon glyphicon-resize-full"></i>
+      <a
+        v-if="fullscreen && state !== 'fullscreen'"
+        :id="`fullscreenId-${randomId}`"
+        href="#"
+        @click="changeState($event, 'fullscreen')"
+      >
+        <i class="glyphicon glyphicon-resize-full" />
         <b-tooltip
           v-if="showTooltip"
           :placement="tooltipPlacement"
@@ -30,8 +63,13 @@
         >Fullscreen
         </b-tooltip>
       </a>
-      <a @click="changeState($event, 'default')" v-if="fullscreen && state === 'fullscreen'" href="#" :id="`restoreId-${randomId}`">
-        <i class="glyphicon glyphicon-resize-small"></i>
+      <a
+        v-if="fullscreen && state === 'fullscreen'"
+        :id="`restoreId-${randomId}`"
+        href="#"
+        @click="changeState($event, 'default')"
+      >
+        <i class="glyphicon glyphicon-resize-small" />
         <b-tooltip
           v-if="showTooltip"
           :placement="tooltipPlacement"
@@ -40,8 +78,12 @@
         </b-tooltip>
       </a>
       <span v-if="collapse && state !== 'collapse'">
-        <a href="#" @click="changeState($event, 'collapse')" :id="`collapseId-${randomId}`">
-          <i class="la la-angle-down"></i>
+        <a
+          :id="`collapseId-${randomId}`"
+          href="#"
+          @click="changeState($event, 'collapse')"
+        >
+          <i class="la la-angle-down" />
           <b-tooltip
             v-if="showTooltip"
             :placement="tooltipPlacement"
@@ -51,8 +93,12 @@
         </a>
       </span>
       <span v-if="collapse && state === 'collapse'">
-        <a href="#" @click="changeState($event, 'default')" :id="`expandId-${randomId}`">
-          <i class="la la-angle-up"></i>
+        <a
+          :id="`expandId-${randomId}`"
+          href="#"
+          @click="changeState($event, 'default')"
+        >
+          <i class="la la-angle-up" />
           <b-tooltip
             v-if="showTooltip"
             :placement="tooltipPlacement"
@@ -61,9 +107,20 @@
           </b-tooltip>
         </a>
       </span>
-      <a v-if="close" href="#" @click="closeWidget($event)" :id="`closeId-${randomId}`">
-        <strong v-if="typeof refresh === 'string'" class="text-gray-light">{{close}}</strong>
-        <i v-else class="la la-remove"></i>
+      <a
+        v-if="close"
+        :id="`closeId-${randomId}`"
+        href="#"
+        @click="closeWidget($event)"
+      >
+        <strong
+          v-if="typeof refresh === 'string'"
+          class="text-gray-light"
+        >{{ close }}</strong>
+        <i
+          v-else
+          class="la la-remove"
+        />
         <b-tooltip
           v-if="showTooltip"
           :placement="tooltipPlacement"
@@ -72,12 +129,23 @@
         </b-tooltip>
       </a>
     </div>
-    <div v-if="customControls" v-html="customControls" ref="customControlsRef" class="widgetControls widget-controls"></div>
-    <div :class="`widgetBody widget-body ${bodyClass}`" ref="widgetBodyRef"
-          :style="{display: state === 'collapse' ? 'none' : ''}"
+    <div
+      v-if="customControls"
+      ref="customControlsRef"
+      class="widgetControls widget-controls"
+      v-html="customControls"
+    />
+    <div
+      ref="widgetBodyRef"
+      :class="`widgetBody widget-body ${bodyClass}`"
+      :style="{display: state === 'collapse' ? 'none' : ''}"
     >
-      <Loader v-if="fetchingData && showLoader" :class="'widget-loader'" :size="40"></Loader>
-      <slot v-else></slot>
+      <Loader
+        v-if="fetchingData && showLoader"
+        :class="'widget-loader'"
+        :size="40"
+      />
+      <slot v-else />
     </div>
   </section>
 </template>
@@ -87,11 +155,7 @@ import Loader from '../Loader/Loader';
 
 export default {
   name: 'Widget',
-  data: function() {
-    return {
-      state: this.collapsed ? 'collapse' : 'default'
-    }
-  },
+  components: { Loader },
   props: {
     customHeader: { type: Boolean, default: false },
     tooltipPlacement: { default: 'top' },
@@ -112,7 +176,11 @@ export default {
     collapsed: {type: Boolean, default: false},
     autoload: {type: [Boolean, Number], default: false}
   },
-  components: { Loader },
+  data: function() {
+    return {
+      state: this.collapsed ? 'collapse' : 'default'
+    }
+  },
   computed: {
     randomId() {
       return Math.floor(Math.random() * 100);

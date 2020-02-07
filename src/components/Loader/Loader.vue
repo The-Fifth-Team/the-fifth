@@ -1,6 +1,9 @@
 <template>
   <div class="data-loader">
-    <i class="la la-spinner la-spin" v-bind:style="{fontSize: size + 'px'}"></i>
+    <i
+      class="la la-spinner la-spin"
+      :style="{fontSize: size + 'px'}"
+    />
   </div>
 </template>
 <script>

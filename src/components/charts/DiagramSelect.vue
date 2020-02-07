@@ -19,7 +19,7 @@ export default {
         :key="i"
         :value="option.value"
       >
-        {{option.label}}
+        {{ option.label }}
       </option>
     </select>
   </label>

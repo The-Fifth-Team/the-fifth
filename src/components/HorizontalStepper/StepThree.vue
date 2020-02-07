@@ -4,9 +4,6 @@
       lg="12"
       xs="12"
     >
-      <h3 class="text-center py-5">
-        <strong>Upload Image</strong>
-      </h3>
       <UploadImage />
     </b-col>
   </section>
@@ -42,6 +39,7 @@ import UploadImage from '@/components/UploadImage';
 
 <style scoped lang="scss">
   .step-three {
-
+    // padding-top: .1em;
+    padding-bottom: 2.3em;
   }
 </style>

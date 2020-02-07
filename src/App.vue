@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'app',
+  name: 'App',
   components: {},
   created() {
     const currentPath = this.$router.history.current.path;

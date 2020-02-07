@@ -16,7 +16,7 @@ export default new Vuex.Store({
       age: 0,
       gender: '',
       descriptors: [],
-      photo: File,
+      photo: null,
     }
   },
   mutations: {
