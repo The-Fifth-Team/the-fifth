@@ -2,41 +2,86 @@
   <div class="auth-page">
     <b-container>
       <h5 class="auth-logo">
-        <i class="fa fa-circle text-gray"></i>
+        <i class="fa fa-circle text-gray" />
         Sing App
-        <i class="fa fa-circle text-warning"></i>
+        <i class="fa fa-circle text-warning" />
       </h5>
-      <Widget class="widget-auth mx-auto" title="<h3 class='mt-0'>Login to your Web App</h3>" customHeader>
-        <p class="widget-auth-info">
-            Use your email to sign in.
+
+      <b-modal
+        id="modal-1"
+        modal-cancel
+        title="<h3 class='text-center'>Login</h3>"
+      >
+        <p class="my-4">
+          <LoginCamera />
         </p>
-        <form class="mt" @submit.prevent="login">
-          <b-alert class="alert-sm" variant="danger" :show="!!errorMessage">
-            {{errorMessage}}
+      </b-modal>
+      <Widget
+        class="widget-auth mx-auto"
+        title="<h3 class='mt-0'>Login to your Web App</h3>"
+        custom-header
+      >
+        <p class="widget-auth-info py-3">
+          Use your email to sign in.
+        </p>
+        <form
+          class="mt"
+          @submit.prevent="login"
+        >
+          <b-alert
+            class="alert-sm"
+            variant="danger"
+            :show="!!errorMessage"
+          >
+            {{ errorMessage }}
           </b-alert>
           <div class="form-group">
-            <input class="form-control no-border" ref="email" required type="email" name="email" placeholder="Email" />
+            <input
+              ref="email"
+              class="form-control no-border"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+            >
           </div>
           <div class="form-group">
-            <input class="form-control no-border" ref="password" required type="password" name="password" placeholder="Password" />
+            <input
+              ref="password"
+              class="form-control no-border"
+              required
+              type="password"
+              name="password"
+              placeholder="Password"
+            >
           </div>
-          <b-button type="submit" size="sm" class="auth-btn mb-3" variant="inverse">Login</b-button>
-          <p class="widget-auth-info">or sign in with</p>
+          <b-button
+            type="submit"
+            size="sm"
+            class="auth-btn mb-3"
+            variant="inverse"
+          >
+            Login
+          </b-button>
+          <p class="widget-auth-info">
+            or sign in as
+          </p>
           <div class="social-buttons">
-            <b-button variant="primary" class="social-button mb-2">
-              <i class="social-icon social-google"></i>
-              <p class="social-text">GOOGLE</p>
-            </b-button>
-            <b-button variant="success" class="social-button">
-              <i class="social-icon social-microsoft"></i>
-              <p class="social-text">MICROSOFT</p>
+            <b-button
+              v-b-modal.modal-1
+              variant="primary"
+              class="social-button mb-2"
+            >
+              <p class="social-text">
+                Basic User
+              </p>
             </b-button>
           </div>
         </form>
         <p class="widget-auth-info">
-          Don't have an account? Sign up now!
+          Don't have an account? <br>
+          Sorry for that but you can't register by yourself
         </p>
-        <router-link class="d-block text-center" to="login">Create an Account</router-link>
       </Widget>
     </b-container>
     <footer class="auth-footer">
@@ -46,15 +91,21 @@
 </template>
 
 <script>
-import Widget from '../../components/Widget/Widget';
+import Widget from '@/components/Widget/Widget';
+import LoginCamera from '@/components/Cameras/LoginCamera';
 
 export default {
   name: 'LoginPage',
-  components: { Widget },
+  components: { Widget, LoginCamera },
   data() {
     return {
       errorMessage: null,
     };
+  },
+  created() {
+    if (window.localStorage.getItem('authenticated') === 'true') {
+      this.$router.push('/app/main/analytics');
+    }
   },
   methods: {
     login() {
@@ -66,11 +117,6 @@ export default {
         this.$router.push('/app/dashboard');
       }
     },
-  },
-  created() {
-    if (window.localStorage.getItem('authenticated') === 'true') {
-      this.$router.push('/app/main/analytics');
-    }
   },
 };
 </script>

@@ -10,22 +10,37 @@
       xs="12"
       class="m-auto"
     >
-      <sweetalert-icon
-        v-if="discriptored"
-        icon="success"
-      />
-
-      <sweetalert-icon
-        v-if="descriptoring"
-        icon="loading"
-      />
-
       <div v-if="error">
-        <h3 class="text-center"><strong>Please Pick images</strong></h3>
+        <h3 class="text-center">
+          <strong>Please Pick images you piece of shit</strong>
+        </h3>
         <sweetalert-icon  
           icon="warning"
         />
       </div>
+      <div
+        v-else-if="descriptoring"
+        style="padding: 18px;"
+      >
+        <sweetalert-icon
+          icon="loading"
+        />
+      </div>
+      <div 
+        v-else-if="discriptored"
+        style="padding: 18px;"
+      >
+        <sweetalert-icon
+          icon="success"
+        />
+      </div>
+      <h1
+        v-else
+        class="text-center"
+        style="padding: 63.5px;"
+      >
+        add 3 images For descriptions
+      </h1>
       <b-form-file 
         id="imageUpload"
         class="mt-3"
@@ -131,9 +146,9 @@ export default {
             
             that.discriptored = !that.discriptored;
             that.descriptoring = !that.descriptoring;
-            setTimeout(() => {
-              that.discriptored = !that.discriptored;
-            }, 2000);
+            // setTimeout(() => {
+            //   that.discriptored = !that.discriptored;
+            // }, 2000);
           })
       }
 

@@ -1,46 +1,81 @@
 <template>
   <aside :class="{chat: true, chatOpen}">
     <header class="chatHeader">
-      <h4 class="chatTitle">Contacts</h4>
+      <h4 class="chatTitle">
+        Contacts
+      </h4>
       <div class="chatSearch">
-        <b-input size="sm" placeholder="Search..." @input="handleSearchInput"/>
+        <b-input
+          size="sm"
+          placeholder="Search..."
+          @input="handleSearchInput"
+        />
         <i class="fa fa-search" />
       </div>
     </header>
     <div :class="{'chatPanel chatContacts': true, chatMessageOpen: chatMessageOpened}">
-      <h5 class="navTitle">TODAY</h5>
-      <b-list-group id="chat-sidebar-user-group" class="chatSidebarUserGroup">
+      <h5 class="navTitle">
+        TODAY
+      </h5>
+      <b-list-group
+        id="chat-sidebar-user-group"
+        class="chatSidebarUserGroup"
+      >
         <b-list-group-item
           v-for="(conversation, index) in todayConversations.filter(filterConversations)"
-          @click="(e) => openMessages(conversation, index)"
           :key="conversation.name"
           :class="{active: index === 0 && chatNotificationMessageState === messageStates.NEW}"
+          @click="(e) => openMessages(conversation, index)"
         >
           <i :class="`fa fa-circle float-right text-${conversation.status}`" />
-          <span v-if="index === 0 && chatNotificationMessageState === messageStates.NEW" class="badge badge-danger badge-pill float-right animated bounceInDown">3</span>
+          <span
+            v-if="index === 0 && chatNotificationMessageState === messageStates.NEW"
+            class="badge badge-danger badge-pill float-right animated bounceInDown"
+          >3</span>
           <span class="thumb-sm float-left mr">
-            <img class="rounded-circle" :src="conversation.image" alt="..." />
+            <img
+              class="rounded-circle"
+              :src="conversation.image"
+              alt="..."
+            >
           </span>
           <div>
-            <h6 class="messageSender">{{conversation.name}}</h6>
-            <p class="messagePreview">{{conversation.lastMessage}}</p>
+            <h6 class="messageSender">
+              {{ conversation.name }}
+            </h6>
+            <p class="messagePreview">
+              {{ conversation.lastMessage }}
+            </p>
           </div>
         </b-list-group-item>
       </b-list-group>
-      <h5 class="navTitle">LAST WEEK</h5>
-      <b-list-group id="chat-sidebar-user-group" class="chatSidebarUserGroup">
+      <h5 class="navTitle">
+        LAST WEEK
+      </h5>
+      <b-list-group
+        id="chat-sidebar-user-group"
+        class="chatSidebarUserGroup"
+      >
         <b-list-group-item
           v-for="conversation in lastWeekConversations.filter(filterConversations)"
-          @click="(e) => openMessages(conversation)"
           :key="conversation.name"
+          @click="(e) => openMessages(conversation)"
         >
           <i :class="`fa fa-circle float-right text-${conversation.status}`" />
           <span class="thumb-sm float-left mr">
-            <img class="rounded-circle" :src="conversation.image" alt="..." />
+            <img
+              class="rounded-circle"
+              :src="conversation.image"
+              alt="..."
+            >
           </span>
           <div>
-            <h6 class="messageSender">{{conversation.name}}</h6>
-            <p class="messagePreview">{{conversation.lastMessage}}</p>
+            <h6 class="messageSender">
+              {{ conversation.name }}
+            </h6>
+            <p class="messagePreview">
+              {{ conversation.lastMessage }}
+            </p>
           </div>
         </b-list-group-item>
       </b-list-group>
@@ -49,7 +84,7 @@
       <h6 class="messagesTitle">
         <a @click="chatMessageOpened = true">
           <i class="fa fa-angle-left mr-xs" />
-          {{conversation.name}}
+          {{ conversation.name }}
         </a>
       </h6>
       <b-list-group>
@@ -58,18 +93,32 @@
           :key="message.id"
           :class="{fromMe: message.fromMe, 'messageItem': true}"
         >
-            <span class="thumb-sm">
-              <img v-if="message.fromMe"
-                class="rounded-circle" src="../../assets/people/a5.jpg" alt="..." />
-              <img v-else
-                class="rounded-circle" :src="conversation.image" alt="..." />
-            </span>
-          <div class="messageBody">{{message.text}}</div>
+          <span class="thumb-sm">
+            <img
+              v-if="message.fromMe"
+              class="rounded-circle"
+              src="../../assets/people/a5.jpg"
+              alt="..."
+            >
+            <img
+              v-else
+              class="rounded-circle"
+              :src="conversation.image"
+              alt="..."
+            >
+          </span>
+          <div class="messageBody">
+            {{ message.text }}
+          </div>
         </b-list-group-item>
       </b-list-group>
       <footer class="chatFooter form-group">
-        <input class="form-control fs-mini"
-          type="text" placeholder="Type your message" @keydown="addMessage"/>
+        <input
+          class="form-control fs-mini"
+          type="text"
+          placeholder="Type your message"
+          @keydown="addMessage"
+        >
       </footer>
     </div>
   </aside>

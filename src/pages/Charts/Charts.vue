@@ -1,8 +1,12 @@
 <template>
   <div class="charts-overview">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">YOU ARE HERE</li>
-      <li class="breadcrumb-item active">Charts</li>
+      <li class="breadcrumb-item">
+        YOU ARE HERE
+      </li>
+      <li class="breadcrumb-item active">
+        Charts
+      </li>
     </ol>
     <h1 class="page-title">
       Visual -
@@ -10,22 +14,40 @@
     </h1>
     <div>
       <b-row>
-
-        <b-col xs="12" lg="7">
+        <b-col
+          xs="12"
+          lg="7"
+        >
           <Widget
-              title="<h5>Apex <span class='fw-semi-bold'>Column Chart</span></h5>"
-              close collapse customHeader >
-            <apexchart type="bar" height="350" :series="cd.apex.column.series" :options="cd.apex.column.options"/>
+            title="<h5>Apex <span class='fw-semi-bold'>Column Chart</span></h5>"
+            close
+            collapse
+            custom-header
+          >
+            <apexchart
+              type="bar"
+              height="350"
+              :series="cd.apex.column.series"
+              :options="cd.apex.column.options"
+            />
           </Widget>
-
         </b-col>
 
-        <b-col xs="12" lg="5">
+        <b-col
+          xs="12"
+          lg="5"
+        >
           <Widget
-              title="<h5>Echarts <span class='fw-semi-bold'>Line Chart</span></h5>"
-              close collapse customHeader
+            title="<h5>Echarts <span class='fw-semi-bold'>Line Chart</span></h5>"
+            close
+            collapse
+            custom-header
           >
-            <echart :options="cd.echarts.line" :init-options="initEchartsOptions" style="height: 370px"></echart>
+            <echart
+              :options="cd.echarts.line"
+              :init-options="initEchartsOptions"
+              style="height: 370px"
+            />
           </Widget>
         </b-col>
 
@@ -63,40 +85,79 @@
             </b-row>
           </Widget>
         </b-col> -->
-        <b-col xs='12' lg='7'>
+        <b-col
+          xs="12"
+          lg="7"
+        >
           <b-row>
-            <b-col xs="12" lg="6">
+            <b-col
+              xs="12"
+              lg="6"
+            >
               <Widget
-                  title="<h5>Apex <span class='fw-semi-bold'>Monochrome Pie</span></h5>"
-                  close collapse customHeader
+                title="<h5>Apex <span class='fw-semi-bold'>Monochrome Pie</span></h5>"
+                close
+                collapse
+                custom-header
               >
-                <apexchart type="pie" height="200" :series="cd.apex.pie.series" :options="cd.apex.pie.options"/>
+                <apexchart
+                  type="pie"
+                  height="200"
+                  :series="cd.apex.pie.series"
+                  :options="cd.apex.pie.options"
+                />
               </Widget>
             </b-col>
-            <b-col xs="12" lg="6">
+            <b-col
+              xs="12"
+              lg="6"
+            >
               <Widget
-                  title="<h5>Echart <span class='fw-semi-bold'>Donut Chart</span></h5>"
-                  close collapse customHeader
+                title="<h5>Echart <span class='fw-semi-bold'>Donut Chart</span></h5>"
+                close
+                collapse
+                custom-header
               >
-                <echart :options="cd.echarts.donut" :init-options="initEchartsOptions" style="height: 175px"></echart>
+                <echart
+                  :options="cd.echarts.donut"
+                  :init-options="initEchartsOptions"
+                  style="height: 175px"
+                />
               </Widget>
             </b-col>
-            <b-col xs="12" lg="12">
+            <b-col
+              xs="12"
+              lg="12"
+            >
               <Widget
-                  title="<h5>Highcharts <span class='fw-semi-bold'>Live Chart</span></h5>"
-                  close collapse customHeader
+                title="<h5>Highcharts <span class='fw-semi-bold'>Live Chart</span></h5>"
+                close
+                collapse
+                custom-header
               >
-                <highcharts :options="ld" ref="highchart"></highcharts>
+                <highcharts
+                  ref="highchart"
+                  :options="ld"
+                />
               </Widget>
             </b-col>
           </b-row>
         </b-col>
-        <b-col xs="12" lg="12">
+        <b-col
+          xs="12"
+          lg="12"
+        >
           <Widget
-              title="<h5>Echart <span class='fw-semi-bold'>River Chart</span></h5>"
-              close collapse customHeader
+            title="<h5>Echart <span class='fw-semi-bold'>River Chart</span></h5>"
+            close
+            collapse
+            custom-header
           >
-            <echart :options="cd.echarts.river" :init-options="initEchartsOptions" style="height: 350px;"></echart>
+            <echart
+              :options="cd.echarts.river"
+              :init-options="initEchartsOptions"
+              style="height: 350px;"
+            />
           </Widget>
         </b-col>
       </b-row>

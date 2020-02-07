@@ -1,17 +1,25 @@
 <template>
-<div :class="{root: true, chatOpen, sidebarClose, sidebarStatic}">
-  <Sidebar />
-  <div class="wrap">
-    <Header />
-    <Chat />
-    <v-touch class="content" @swipe="handleSwipe" :swipe-options="{direction: 'horizontal'}">
-      <router-view />
-      <footer class="contentFooter">
-        Sing Vue Version - Made by <a href="https://flatlogic.com" rel="nofollow noopener noreferrer" target="_blank">Flatlogic</a>
+  <div :class="{root: true, chatOpen, sidebarClose, sidebarStatic}">
+    <Sidebar />
+    <div class="wrap">
+      <Header />
+      <Chat />
+      <v-touch
+        class="content"
+        :swipe-options="{direction: 'horizontal'}"
+        @swipe="handleSwipe"
+      >
+        <router-view />
+        <footer class="contentFooter">
+          Sing Vue Version - Made by <a
+            href="https://flatlogic.com"
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+          >Flatlogic</a>
         </footer>
-    </v-touch>
+      </v-touch>
+    </div>
   </div>
-</div>
 </template>
 
 <script>

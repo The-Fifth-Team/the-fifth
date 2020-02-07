@@ -55,9 +55,9 @@ export default {
     id="tooltip"
     class="tooltip"
   >
-    <div class="tt-parent"/>
-    <div class="tt-current"/>
-    <div class="tt-value"/>
+    <div class="tt-parent" />
+    <div class="tt-current" />
+    <div class="tt-value" />
   </div>
 </template>
 
