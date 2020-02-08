@@ -4,13 +4,15 @@ import Login from '@/pages/Login/Login';
 // Core
 // import TypographyPage from '@/pages/Typography/Typography';
 
+import DetectingCamera from '../components/Cameras/DetectingCamera'
+
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
 
 // Sec Charts
 // import WorldPopulation from '../pages/WorldPopulation.vue';
 
-import UserPage from '../pages/UserPage'
+// import UserPage from '../pages/UserPage'
 
 // Maps
 // import GoogleMapPage from '@/pages/Maps/Google';
@@ -27,13 +29,15 @@ import ChartsPage from '@/pages/Charts/Charts';
 
 import ResetPassword from '@/pages/ResetPassword'
 
-// import LoginCamera from '../components/Cameras/LoginCamera'
+import TimelineComponent from '../components/Timeline/TimelineComponent';
+
+import LoginCamera from '../components/Cameras/LoginCamera'
 
 const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: UserPage,
+    component: DetectingCamera,
   },
   {
     path: '/reset',

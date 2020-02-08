@@ -18,7 +18,6 @@
 </template>
 <script lang="js">
 import * as faceapi from "../../../public/face-api.min";
-import axios from 'axios';
 
 export default {
   name: 'LoginCamera',
@@ -66,9 +65,26 @@ export default {
     },
     detect: async function(){
       const video = this.$refs.video1
-      const displaySize = { width:video.width, height: video.height }
+      const displaySize = { width: video.width, height: video.height }
       const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().withFaceDescriptor()
         if (detections) {
+          // Need to be checked 
+          try {
+            this.$apollo.query({
+              query: faceLogIn,
+              variables: {
+                data: detections.descriptor
+              }
+            })
+            .then(result => {
+              // Assume we have Token
+              storage.setItem('X-auth', result);
+            })
+          }
+          catch (err) {
+            // problem with detecting
+            alert('something just happened')
+          }
           this.detections = detections
           video.pause();
           video.removeAttribute('src');
@@ -80,32 +96,6 @@ export default {
     }
   }
 }
-// axios({
-//     method: 'post',
-//     url: 'http://localhost:3000/',
-//     data: detections,
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   })
-//   .then(function(response) {
-//     console.log({response});
-//   })
-//   .catch(function(error) {
-//     console.log({error});
-//   });
-// captureVideoButton: function() {
-//   Promise.all([
-//       faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
-//       faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-//       faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
-//       faceapi.nets.faceExpressionNet.loadFromUri('./models')
-//     ])
-//     .then(() => {
-//       this.startRecognizing()
-//     });
-// },
-//console.log(this.video.readyState)
 </script>
 <style scoped lang="scss">
 .webcam-2 {

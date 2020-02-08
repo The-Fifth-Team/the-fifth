@@ -91,6 +91,7 @@
       width: 95%;
       left: 0;
       padding: 1.5em;
+      padding-right: 65px;
       @include breakpoint(xs) {
         width: 90%;
         justify-content: center;
