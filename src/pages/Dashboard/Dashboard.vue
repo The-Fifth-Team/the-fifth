@@ -15,7 +15,6 @@
           lg="4"
           sm="6"
           xs="12"
-          class="widgets"
         >
           <div class="pb-xlg h-100">
             <Widget
@@ -36,7 +35,6 @@
           lg="4"
           sm="6"
           xs="12"
-          class="widgets"
         >
           <div class="pb-xlg h-100">
             <Widget
@@ -57,7 +55,6 @@
           lg="4"
           sm="6"
           xs="12"
-          class="widgets"
         >
           <div class="pb-xlg h-100">
             <Widget
@@ -75,106 +72,17 @@
         </b-col>
       </b-row>
     </div>
-    <!-- <Widget
-      body-class="widget-form-overflow"
-      custom-header
-    >
-      <b-row>
-        <b-col
-          lg="4"
-          xs="12"
-          class="p-4"
-        >
-          <h3 class="text-center py-4">
-            <strong>User Data</strong>
-          </h3>
-          <b-row class="">
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> FirstName: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <b-form-input type="text" />
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> LastName: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <b-form-input type="text" />
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> Email: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <b-form-input type="email" />
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> Password: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <b-form-input type="password" />
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="3"
-            >
-              <label> Date of Birth: </label>
-            </b-col>
-            <b-col
-              class="my-2"
-              sm="9"
-            >
-              <b-form-input type="date" />
-            </b-col>
-          </b-row>
-        </b-col>
-        <b-col
-          lg="4"
-          xs="12"
-        >
-          <h3 class="text-center py-5">
-            <strong>Upload Image</strong>
-          </h3>
-          <UploadImage />
-        </b-col>
-        <b-col
-          lg="4"
-          xs="12"
-        >
-          <h3 class="text-center py-5">
-            <strong>Facial Discriptor</strong>
-          </h3>
-          <FacialDiscriptorExtractor />
-        </b-col>
-      </b-row>
-    </Widget> -->
     <Widget>
       <b-row>
         <b-col>
           <Horizontal />
+        </b-col>
+      </b-row>
+    </Widget>
+    <Widget>
+      <b-row style="float: right;">
+        <b-col lg="2">
+          <Timeline />
         </b-col>
       </b-row>
     </Widget>
@@ -183,20 +91,15 @@
 
 <script>
 import Widget from '@/components/Widget/Widget';
-// import UploadImage from '@/components/UploadImage';
-// import FacialDiscriptorExtractor from '@/components/FacialDiscriptorExtractor';
-import Horizontal from '../../components/HorizontalStepper/HorizontalStepper';
-// import LoginCamera from '../../components/Cameras/LoginCamera'
-// import { Chart } from 'highcharts-vue';
+import Timeline from '@/components/Timeline/TimelineComponent';
+import Horizontal from '@/components/HorizontalStepper/HorizontalStepper';
 
 export default {
   name: 'Dashboard',
   components: {
-    // UploadImage,
     Widget,
-    // FacialDiscriptorExtractor,
+    Timeline,
     Horizontal
-    // highcharts: Chart
   },
   data() {
     return {

@@ -421,8 +421,15 @@ export default {
         document.getElementById(this.idEdit).value = ''
       }
       this.$store.commit('addImage', this.file);
-      // this.isUploaded = true; 
-      console.log(this.$store.getters.getUserData)
+      // let state = this.$store.state.UserData;
+      // let newState = {};
+
+      // Object.keys(state).forEach(key => {
+      //   newState[key] = null; // or = initialState[key]
+      // });
+
+      // this.$store.replaceState(newState);
+      // console.log('After: ' + this.$store.getters.getUserData)
     },
     changeHighlight (currentIndex) {
       this.currentIndexImage = currentIndex;
@@ -690,6 +697,8 @@ export default {
     max-width: 190px;
     min-height: 50px;
     margin-top: 10px;
+    margin: auto;
+    padding-top: 10px;
   }
   .image-list-container .image-list-item {
     height: 32px;
@@ -707,6 +716,7 @@ export default {
   }
   .image-list-container .image-highlight {
     border: 1px solid #2fa3e7;
+    /* margin-left: 100.5px; */
   }
   .add-image-svg {
     width: 12px;
