@@ -81,7 +81,7 @@
 <script lang="js">
 import * as faceapi from "../../public/face-api.min.js";
 import SuccessComponent from '../components/AnimationComponents/SuccessComponent'
-import axios from 'axios';
+// import axios from 'axios';
 
 
 export default {

@@ -283,7 +283,8 @@ export default {
     finalClick (e) {
       console.log(this.$store)
       if (e.target.innerText === 'Finish') {
-        let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
+        let newStore = Object.create(this.$store.getters.getUserData)
+        let { firstName, lastName, age, gender, descriptors, photo } = newStore
         if ( 
           firstName !== ''
           && lastName  !== ''
@@ -292,27 +293,30 @@ export default {
           && descriptors.length !== 0
           && !!photo
         ) {
-          this.$apollo.mutate({
-            mutation: uploadPhotoMutation,
-            variables: {
-              data: {
-                firstName,
-                lastName,
-                age,
-                gender,
-                descriptors,
-                photo
+          try {
+            this.$apollo.mutate({
+              mutation: uploadPhotoMutation,
+              variables: {
+                data: {
+                  firstName,
+                  lastName,
+                  age,
+                  gender,
+                  descriptors,
+                  photo
+                }
               }
-            }
-          })
-          alert('Done')
-          console.log('Before: ', this.$store.getters.getUserData)
-          // this.completedForm = !this.completedForm;
-          // this.isDone = !this.isDone;
-          this.$store.commit('reset')
-          console.log('After: ', this.$store.getters.getUserData)
+            })
+          } catch (err) {
+            alert('Catch error')
+            // this.completedForm = !this.completedForm;
+            // this.isDone = !this.isDone;
+            this.$store.commit('reset')
+            console.log('After: ', newStore)
+            console.log('After: ', this.$store.getters.getUserData)
+          }
         } else {
-          alert('Error')
+          alert('Error form')
           // console.log(photo)
           // this.completedForm = !this.completedForm;
           // setTimeout(() => {
