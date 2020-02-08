@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="container mt-5 mb-5">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h4>Latest News</h4>
+    <b-row>
+      <b-col lg="12">
+        <h4 class="text-center">Latest News</h4>
         <ul class="timeline">
           <li 
             v-for="item in items"
@@ -156,8 +156,8 @@
             </div>
           </li>
         </ul>
-      </div>
-    </div>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -196,17 +196,17 @@
 ul.timeline {
   list-style-type: none;
   position: relative;
-  width: 650px;
+  width: 620px;
 }
 ul.timeline:before {
   content: ' ';
-  background: #d4d9df;
+  background: red;
   display: inline-block;
   position: absolute;
   left: 29px;
   width: 2px;
   height: 100%;
-  z-index: -1;
+  z-index: -2;
 }
 ul.timeline > li {
   margin: 41px 0;
@@ -234,6 +234,6 @@ ul.timeline > li {
   width: 50px;
   height: 50px;
   margin-left: -46.8px;
-  z-index: 0;
+  z-index: -1;
 }
 </style>

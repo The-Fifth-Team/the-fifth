@@ -25,7 +25,6 @@
 </template>
 <script lang="js">
 import * as faceapi from "../../../public/face-api.min";
-// const axios = require('axios');
 
 export default {
   name: 'DetectingCamera',

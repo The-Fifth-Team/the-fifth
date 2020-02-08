@@ -15,7 +15,7 @@
 
 
 <script>
-import VueUploadMultipleImage from '../components/VueUploadMultipleImage'
+import VueUploadMultipleImage from '@/components/VueUploadMultipleImage'
 export default {
   name: 'UploadImage',
   components: {
@@ -26,29 +26,15 @@ export default {
     }
   },
   methods: {
-    uploadImageSuccess() {
-      // console.log(formData);
-      // console.log(fileList);
-      // Upload image api
-      // axios.post('http://gostore.gostore-api.test/api/items/upload', formData).then(response => {
-      //   console.log(response)
-      // })
-    },
+    uploadImageSuccess() {},
+    editImage () {},
+    dataChange () {},
+    limitExceeded(){},
     beforeRemove (index, done) {
-      // console.log('index', index, fileList);
       const r = confirm("remove image");
       if (r == true) {
         done()
       }
-    },
-    editImage () {
-      // console.log('edit data', formData, index, fileList)
-    },
-    dataChange () {
-      // console.log(data)
-    },
-    limitExceeded(){
-      // console.log(amount)
     }
   }
 }

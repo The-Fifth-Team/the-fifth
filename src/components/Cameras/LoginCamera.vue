@@ -76,6 +76,10 @@ export default {
                 data: detections.descriptor
               }
             })
+            .then(result => {
+              // Assume we have Token
+              storage.setItem('X-auth', result);
+            })
           }
           catch (err) {
             // problem with detecting
