@@ -281,6 +281,7 @@ export default {
       this.$forceUpdate();
     },
     finalClick (e) {
+      console.log(this.$store)
       if (e.target.innerText === 'Finish') {
         let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
         if ( 
@@ -304,15 +305,20 @@ export default {
               }
             }
           })
-          console.log(this.$store.getters.getUserData)
-          document.getElementById('isUploaded').style.display = 'none';
-          this.completedForm = !this.completedForm;
-          this.isDone = !this.isDone;
+          alert('Done')
+          console.log('Before: ', this.$store.getters.getUserData)
+          // this.completedForm = !this.completedForm;
+          // this.isDone = !this.isDone;
+          this.$store.commit('reset')
+          console.log('After: ', this.$store.getters.getUserData)
         } else {
-          console.log(photo)
-          this.completedForm = !this.completedForm;
-          this.isDone = !this.isDone;
-          document.getElementById('isUploaded').style.display = 'block';
+          alert('Error')
+          // console.log(photo)
+          // this.completedForm = !this.completedForm;
+          // setTimeout(() => {
+          //   this.completedForm = !this.completedForm;
+          // }, 1200);
+          // this.isDone = !this.isDone;
         }
       }
     },
@@ -322,7 +328,7 @@ export default {
       this.steps.forEach(step => {
         this.nextButton[step.name] = true;
       });
-    }
+    },
   }
 };
 </script>

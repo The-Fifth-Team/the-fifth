@@ -66,9 +66,15 @@ export default {
     },
     detect: async function(){
       const video = this.$refs.video1
-      const displaySize = { width:video.width, height: video.height }
+      const displaySize = { width: video.width, height: video.height }
       const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().withFaceDescriptor()
         if (detections) {
+          this.$apollo.query({
+            query: faceLogIn,
+            variables: {
+              data: detections.descriptor
+            }
+          })
           this.detections = detections
           video.pause();
           video.removeAttribute('src');

@@ -33,6 +33,14 @@ export default new Vuex.Store({
     },
     addGender (state, event) {
       state.userData.gender = event;
+    },
+    reset (state) {
+      state.userData.firstName = '';
+      state.userData.lastName = '';
+      state.userData.age = 0;
+      state.userData.gender = '';
+      state.userData.descriptors = [];
+      state.userData.photo = null;
     }
   },
   getters: {

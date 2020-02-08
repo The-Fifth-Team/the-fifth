@@ -97,21 +97,21 @@ export default {
       const video = this.$refs.video1;
       const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceExpressions().withFaceDescriptors()
       if (detections.length) {
-        console.log(detections)
-        // axios({
-            // method: 'post',
-            // url: 'http://localhost:3000/',
-            // data: detections,
-            // headers: {
-              // 'Content-Type': 'application/json'
-            // }
-          // })
-          // .then(function(response) {
-            // console.log({response});
-          // })
-          // .catch(function(error) {
-            // console.log({error});
-          // });
+        let filteredDetections = detections
+          .map(elm => {
+            return {
+              descriptor: elm.descriptor,
+              expressions: elm.expressions
+            }
+          })
+        // this.$apollo.mutate({
+        //   mutation: userFaceIdentifier,
+        //   variables: {
+        //     data: {
+        //       filteredDetections
+        //     }
+        //   }
+        // })
       }
     },
     turnCameraOff: function (){
