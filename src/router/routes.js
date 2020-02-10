@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: DetectingCamera,
+    component: Login,
   },
   {
     path: '/reset',
