@@ -78,12 +78,13 @@ export default {
             })
             .then(result => {
               // Assume we have Token
+              console.log('Result after login: ', result);
               storage.setItem('X-auth', result);
             })
           }
           catch (err) {
             // problem with detecting
-            alert('something just happened')
+            console.log('something just happened')
           }
           this.detections = detections
           video.pause();

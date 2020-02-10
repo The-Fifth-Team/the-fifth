@@ -115,9 +115,12 @@ export default {
               }
             }
           })
+          .then(result => {
+            console.log('Result after deteving... ' + result);
+          })
         } catch (err) {
           // problem with detecting
-          alert('Prooooooblem')
+          console.log('Problem while Detecting...')
         }
       }
     },
