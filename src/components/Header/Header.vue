@@ -2,13 +2,25 @@
   <b-navbar class="header d-print-none">
     <b-nav>
       <b-nav-item>
-        <a class="d-md-down-none px-2" href="#" @click="toggleSidebarMethod" id="barsTooltip">
-          <i class='la la-bars la-lg' />
+        <a
+          id="barsTooltip"
+          class="d-md-down-none px-2"
+          href="#"
+          @click="toggleSidebarMethod"
+        >
+          <i class="la la-bars la-lg" />
         </a>
-        <b-tooltip target="barsTooltip" placement="bottom">
+        <b-tooltip
+          target="barsTooltip"
+          placement="bottom"
+        >
           Turn on/off <br> sidebar <br> collapsing
         </b-tooltip>
-        <a class="fs-lg d-lg-none" href="#" @click="switchSidebarMethod">
+        <a
+          class="fs-lg d-lg-none"
+          href="#"
+          @click="switchSidebarMethod"
+        >
           <span class="rounded rounded-lg bg-gray text-white d-md-none">
             <i class="la la-bars la-lg" />
           </span>
@@ -16,29 +28,41 @@
         </a>
       </b-nav-item>
       <b-nav-item class="d-md-down-none">
-        <a href="#" class="px-2">
+        <a
+          href="#"
+          class="px-2"
+        >
           <i class="la la-refresh la-lg" />
         </a>
       </b-nav-item>
       <b-nav-item class="d-md-down-none">
-        <a href="#" class="px-2">
+        <a
+          href="#"
+          class="px-2"
+        >
           <i class="la la-times la-lg" />
         </a>
       </b-nav-item>
     </b-nav>
     <b-nav>
-      <b-form class="d-sm-down-none ml-5" inline>
+      <b-form
+        class="d-sm-down-none ml-5"
+        inline
+      >
         <b-form-group>
           <b-input-group class="input-group-no-border">
             <div class="input-group-addon d-flex align-items-center">
               <i class="la la-search px-3" />
             </div>
-            <b-input id="search-input" placeholder="Search Dashboard" />
+            <b-input
+              id="search-input"
+              placeholder="Search Dashboard"
+            />
           </b-input-group>
         </b-form-group>
       </b-form>
     </b-nav>
-    <a  class="navbar-brand d-md-none">
+    <a class="navbar-brand d-md-none">
       <i class="fa fa-circle text-gray mr-n-sm" />
       <i class="fa fa-circle text-warning" />
       &nbsp;
@@ -52,17 +76,26 @@
         id="basic-nav-dropdown"
         class="notifications-menu d-sm-down-none mr-2"
         extra-menu-classes="notifications-wrapper py-0 animated animated-fast fadeInUp"
-        right>
+        right
+      >
         <template slot="button-content">
           <span class="avatar thumb-sm float-left mr-2">
-            <img class="rounded-circle" src="../../assets/people/a5.jpg" alt="..." />
+            <img
+              class="rounded-circle"
+              src="../../assets/people/a5.jpg"
+              alt="..."
+            >
           </span>
           <span class="small">Philip <span class="fw-semi-bold">Smith</span></span>
           <span class="ml-1 circle bg-warning text-white fw-bold">13</span>
         </template>
         <Notifications />
       </b-nav-item-dropdown>
-      <b-nav-item-dropdown class="settings-dropdown d-sm-down-none" no-caret right>
+      <b-nav-item-dropdown
+        class="settings-dropdown d-sm-down-none"
+        no-caret
+        right
+      >
         <template slot="button-content">
           <i class="la la-cog px-2" />
         </template>
@@ -70,7 +103,13 @@
         <b-dropdown-divider />
         <b-dropdown-item>Calendar</b-dropdown-item>
         <b-dropdown-item>
-          Inbox &nbsp;&nbsp;<b-badge variant="danger" pill class="animated bounceIn">9</b-badge>
+          Inbox &nbsp;&nbsp;<b-badge
+            variant="danger"
+            pill
+            class="animated bounceIn"
+          >
+            9
+          </b-badge>
         </b-dropdown-item>
         <b-dropdown-divider />
         <b-dropdown-item-button @click="logout">
@@ -78,10 +117,18 @@
         </b-dropdown-item-button>
       </b-nav-item-dropdown>
       <b-nav-item>
-        <a class="d-sm-down-none px-2" id="toggle-chat" href="#" @click="toggleChat">
+        <a
+          id="toggle-chat"
+          class="d-sm-down-none px-2"
+          href="#"
+          @click="toggleChat"
+        >
           <i class="la la-globe" />
         </a>
-        <i v-if="chatNotificationIcon" class="chat-notification-sing animated bounceIn"></i>
+        <i
+          v-if="chatNotificationIcon"
+          class="chat-notification-sing animated bounceIn"
+        />
         <!-- <div id="chat-notification" class="chat-notification" :class="{'notification-hidden': !chatNotificationPopover}">
           <div class="chat-notification-inner">
             <h6 class="title d-flex text-white">
@@ -99,7 +146,10 @@
         </div> -->
       </b-nav-item>
       <b-nav-item class="fs-lg d-md-none">
-        <a href="#" @click="toggleChat">
+        <a
+          href="#"
+          @click="toggleChat"
+        >
           <span class="rounded rounded-lg bg-gray text-white"><i class="la la-globe" /></span>
         </a>
       </b-nav-item>

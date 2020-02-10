@@ -1,11 +1,18 @@
 import Layout from '../components/Layout/Layout'
 import Login from '@/pages/Login/Login';
-import ErrorPage from '@/pages/Error/Error';
+// import ErrorPage from '@/pages/Error/Error';
 // Core
 // import TypographyPage from '@/pages/Typography/Typography';
-import WorldPopulation from'../pages/WorldPopulation.vue'
+
+import DetectingCamera from '../components/Cameras/DetectingCamera'
+
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
+
+// Sec Charts
+// import WorldPopulation from '../pages/WorldPopulation.vue';
+
+// import UserPage from '../pages/UserPage'
 
 // Maps
 // import GoogleMapPage from '@/pages/Maps/Google';
@@ -17,9 +24,14 @@ import AnalyticsPage from '@/pages/Dashboard/Dashboard';
 import ChartsPage from '@/pages/Charts/Charts';
 
 // Ui
-import IconsPage from '@/pages/Icons/Icons';
+// import IconsPage from '@/pages/Icons/Icons';
 // import NotificationsPage from '@/pages/Notifications/Notifications';
 
+import ResetPassword from '@/pages/ResetPassword'
+
+import TimelineComponent from '../components/Timeline/TimelineComponent';
+
+import LoginCamera from '../components/Cameras/LoginCamera'
 
 const routes = [
   {
@@ -28,10 +40,15 @@ const routes = [
     component: Login,
   },
   {
-    path: '/error',
-    name: 'Error',
-    component: ErrorPage,
+    path: '/reset',
+    name: 'ResetPassword',
+    component: ResetPassword,
   },
+  // {
+  //   path: '/error',
+  //   name: 'Error',
+  //   component: ErrorPage,
+  // },
   {
     path: '/app',
     name: 'Layout',
@@ -52,16 +69,16 @@ const routes = [
       //   name: 'TypographyPage',
       //   component: TypographyPage,
       // },
-      {
-        path: 'components/icons',
-        name: 'IconsPage',
-        component: IconsPage,
-      },
-      {
-        path: 'seccharts',
-        name: 'WhidaCharts',
-        component: WorldPopulation
-      },
+      // {
+      //   path: 'components/icons',
+      //   name: 'IconsPage',
+      //   component: IconsPage,
+      // },
+      // {
+      //   path: 'seccharts',
+      //   name: 'WhidaCharts',
+      //   component: UserPage
+      // },
       {
         path: 'tables',
         name: 'TablesBasicPage',

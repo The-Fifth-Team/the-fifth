@@ -5,49 +5,50 @@
     @mouseleave="sidebarMouseLeave"
   >
     <header class="logo">
-      <router-link to="/app"><span class="text-warning">Sing</span> App</router-link>
+      <router-link to="/app">
+        <span class="text-warning">Sing</span> App
+      </router-link>
     </header>
     <ul class="nav">
       <NavLink
         header="Home"
         link="/app/dashboard"
-        iconName="flaticon-home"
+        icon-name="flaticon-home"
         index="dashboard"
-        isHeader
+        is-header
       />
       <NavLink
         header="Charts"
         link="/app/charts"
-        iconName="flaticon-list"
+        icon-name="flaticon-list"
         index="charts"
-        isHeader
+        is-header
       />
       <NavLink
         header="Sec Charts"
         link="/app/seccharts"
-        iconName="flaticon-star"
+        icon-name="flaticon-star"
         index="notifications"
-        isHeader
+        is-header
       />
       <NavLink
         header="Tables Basic"
         link="/app/tables"
-        iconName="flaticon-equal-1"
+        icon-name="flaticon-equal-1"
         index="tables"
-        isHeader
+        is-header
       />
       <NavLink
-        :activeItem="activeItem"
+        :active-item="activeItem"
         header="Components"
         link="/app/components"
-        iconName="flaticon-network"
+        icon-name="flaticon-network"
         index="components"
-        :childrenLinks="[
+        :children-links="[
           { header: 'Icons', link: '/app/components/icons' },
         ]"
       />
     </ul>
-
   </nav>
 </template>
 

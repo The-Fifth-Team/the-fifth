@@ -2,102 +2,104 @@
   <div>
     <b-breadcrumb>
       <b-breadcrumb-item>YOU ARE HERE</b-breadcrumb-item>
-      <b-breadcrumb-item active>Dashboard</b-breadcrumb-item>
+      <b-breadcrumb-item active>
+        Dashboard
+      </b-breadcrumb-item>
     </b-breadcrumb>
-    <h1 class="page-title">Dashboard</h1>
+    <h1 class="page-title">
+      Dashboard
+    </h1>
     <div>
       <b-row>
-
-        <b-col lg="4" sm="6" xs="12" class="widgets">
+        <b-col
+          lg="4"
+          sm="6"
+          xs="12"
+        >
           <div class="pb-xlg h-100">
-            <Widget class="h-100 mb-0 text-center p-4" title="Happy">
-              <img src="../../assets/img/happy.png" width="120px" alt="netural-face" />
+            <Widget
+              class="h-100 mb-0 text-center p-4"
+              title="Happy"
+            >
+              <img
+                src="../../assets/img/happy.png"
+                width="120px"
+                alt="netural-face"
+              >
               <h3><strong>30%</strong></h3>
             </Widget>
           </div>
         </b-col>
 
-        <b-col lg="4" sm="6" xs="12" class="widgets">
+        <b-col
+          lg="4"
+          sm="6"
+          xs="12"
+        >
           <div class="pb-xlg h-100">
-            <Widget class="h-100 mb-0 text-center p-4" title="Netural">
-              <img src="../../assets/img/netural.png" width="120px" alt="netural-face" />
+            <Widget
+              class="h-100 mb-0 text-center p-4"
+              title="Netural"
+            >
+              <img
+                src="../../assets/img/netural.png"
+                width="120px"
+                alt="netural-face"
+              >
               <h3><strong>23%</strong></h3>
             </Widget>
           </div>
         </b-col>
 
-        <b-col lg="4" sm="6" xs="12" class="widgets">
+        <b-col
+          lg="4"
+          sm="6"
+          xs="12"
+        >
           <div class="pb-xlg h-100">
-            <Widget class="h-100 mb-0 text-center p-4" title="Sad">
-              <img src='../../assets/img/sad.png' width="120px" alt="sad-face"/>
+            <Widget
+              class="h-100 mb-0 text-center p-4"
+              title="Sad"
+            >
+              <img
+                src="../../assets/img/sad.png"
+                width="120px"
+                alt="sad-face"
+              >
               <h3><strong>47%</strong></h3>
             </Widget>
           </div>
         </b-col>
-        
       </b-row>
     </div>
-      <Widget
-        bodyClass="widget-form-overflow"
-        customHeader
-      >
-       <b-row>
-          <b-col lg="6" xs="12" class="p-4">
-            <h3 class="text-center py-4"><strong>User Data</strong></h3>
-                <b-row class="">
-                  <b-col class='my-2' sm="3">
-                    <label> FirstName: </label>
-                  </b-col>
-                  <b-col class='my-2' sm="9">
-                    <b-form-input type="text"></b-form-input>
-                  </b-col>
-                  <b-col class='my-2' sm="3">
-                    <label> LastName: </label>
-                  </b-col>
-                  <b-col class='my-2' sm="9">
-                    <b-form-input type="text"></b-form-input>
-                  </b-col>
-                  <b-col class='my-2' sm="3">
-                    <label> Email: </label>
-                  </b-col>
-                  <b-col class='my-2' sm="9">
-                    <b-form-input type="email"></b-form-input>
-                  </b-col>
-                  <b-col class='my-2' sm="3">
-                    <label> Password: </label>
-                  </b-col>
-                  <b-col class='my-2' sm="9">
-                    <b-form-input type="password"></b-form-input>
-                  </b-col>
-                  <b-col class='my-2' sm="3">
-                    <label> Date of Birth: </label>
-                  </b-col>
-                  <b-col class='my-2' sm="9">
-                    <b-form-input type="date"></b-form-input>
-                  </b-col>
-                </b-row>
-          </b-col>
-          <b-col lg="6" xs="12" class="my-1">
-            <h3 class="text-center py-5"><strong>Upload Images</strong></h3>
-            <UploadImage></UploadImage>
-          </b-col>
+    <Widget>
+      <b-row>
+        <b-col>
+          <Horizontal />
+        </b-col>
       </b-row>
     </Widget>
-    
+    <Widget>
+      <b-row style="float: right;">
+        <b-col lg="2">
+          <Timeline />
+        </b-col>
+      </b-row>
+    </Widget>
   </div>
 </template>
 
 <script>
-import Widget from '../../components/Widget/Widget';
-import UploadImage from '../../components/UploadImage';
-// import { Chart } from 'highcharts-vue';
+import Widget from '@/components/Widget/Widget';
+import Timeline from '@/components/Timeline/TimelineComponent';
+import Horizontal from '@/components/HorizontalStepper/HorizontalStepper';
 
 export default {
   name: 'Dashboard',
   components: {
-    UploadImage,
     Widget,
-    // highcharts: Chart
+    Timeline,
+    Horizontal
   },
   data() {
     return {
@@ -151,43 +153,7 @@ export default {
         city: 'Hanoverton',
         status: 'Sent',
       }],
-      types: [
-          'text',
-          'number',
-          'email',
-          'password',
-          'search',
-          'url',
-          'tel',
-          'date',
-          'time',
-        ]
     };
-  },
-  methods: {
-    getRandomData() {
-      const arr = [];
-
-      for (let i = 0; i < 25; i += 1) {
-        arr.push(Math.random().toFixed(1) * 10);
-      }
-
-      return arr;
-    },
-    getRevenueData() {
-      const data = [];
-      const seriesCount = 3;
-      const accessories = ['SMX', 'Direct', 'Networks'];
-
-      for (let i = 0; i < seriesCount; i += 1) {
-        data.push({
-          label: accessories[i],
-          data: Math.floor(Math.random() * 100) + 1,
-        });
-      }
-
-      return data;
-    }
   },
   computed: {
     donut() {
@@ -247,6 +213,31 @@ export default {
         },
         series
       };
+    }
+  },
+  methods: {
+    getRandomData() {
+      const arr = [];
+
+      for (let i = 0; i < 25; i += 1) {
+        arr.push(Math.random().toFixed(1) * 10);
+      }
+
+      return arr;
+    },
+    getRevenueData() {
+      const data = [];
+      const seriesCount = 3;
+      const accessories = ['SMX', 'Direct', 'Networks'];
+
+      for (let i = 0; i < seriesCount; i += 1) {
+        data.push({
+          label: accessories[i],
+          data: Math.floor(Math.random() * 100) + 1,
+        });
+      }
+
+      return data;
     }
   }
 };
