@@ -26,16 +26,29 @@ Vue.use(VueApollo)
 
 const apolloClient = new ApolloClient({
     link: createUploadLink({ uri: 'https://guarded-fortress.herokuapp.com' }),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    fetchOptions: {
+        credentials: 'include'
+    },
+    request: operation => {
+        if (!localStorage.token) {
+            localStorage.setItem('token', '');
+        }
+        operation.setContext({
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
+    }
 })
 const apolloProvider = new VueApollo({
-  defaultClient: apolloClient
+    defaultClient: apolloClient
 })
 
 Vue.use(BootstrapVue);
 Vue.use(VueTouch);
 Vue.use(Trend);
-Vue.use(Toasted, {duration: 10000});
+Vue.use(Toasted, { duration: 10000 });
 Vue.component('apexchart', VueApexCharts);
 
 // Vue.config.productionTip = false;
@@ -49,8 +62,8 @@ export const eventBus = new Vue()
 Vue.component('VueUploadMultipleImage', VueUploadMultipleImage);
 
 new Vue({
-  apolloProvider,
-  router,
-  store,
-  render: h => h(App),
+    apolloProvider,
+    router,
+    store,
+    render: h => h(App),
 }).$mount('#app')
