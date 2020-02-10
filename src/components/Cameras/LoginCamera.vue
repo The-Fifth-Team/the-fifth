@@ -18,7 +18,7 @@
 </template>
 <script lang="js">
 import * as faceapi from "../../../public/face-api.min";
-
+import {FACE_LOG_IN} from "../../graphql/Queries"
 export default {
   name: 'LoginCamera',
   props: [],
@@ -43,11 +43,11 @@ export default {
           videoSelect.appendChild(option);
         }
       })
-    })
+    });
     video.addEventListener('playing', async () => {
-      this.refreshId = setInterval(this.detect, 5000)
+      this.refreshId = setInterval(this.detect, 5000);
       this.detect()
-    })
+    });
     Promise.all([
       faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
       faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
@@ -60,18 +60,18 @@ export default {
   },
   methods: {
      startRecognizing: function (){
-      const video = this.$refs.video1
+      const video = this.$refs.video1;
       navigator.getUserMedia({video: {}},(stream) => video.srcObject = stream, (err) => console.error(err))
     },
     detect: async function(){
-      const video = this.$refs.video1
-      const displaySize = { width: video.width, height: video.height }
+      const video = this.$refs.video1;
+      const displaySize = { width: video.width, height: video.height };
       const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().withFaceDescriptor()
         if (detections) {
           // Need to be checked 
           try {
             this.$apollo.query({
-              query: faceLogIn,
+              query: FACE_LOG_IN,
               variables: {
                 data: detections.descriptor
               }
@@ -86,7 +86,7 @@ export default {
             // problem with detecting
             console.log('something just happened')
           }
-          this.detections = detections
+          this.detections = detections;
           video.pause();
           video.removeAttribute('src');
           video.srcObject.getTracks().forEach(track => {
