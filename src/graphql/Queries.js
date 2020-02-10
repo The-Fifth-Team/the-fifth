@@ -12,7 +12,7 @@ const GET_ALL_USERS = gql `query getAllUsers{
   }`;
 
 const GET_PERIOD_EMOTIONS = gql `query getPeriodEmotions($startDate: String!, endDate: String!) {
-    getPeriodEmotions(startDate: $startDate, endDate $endDate) {
+    getPeriodEmotions(startDate: $startDate, endDate: $endDate) {
       averages
       status
     }
