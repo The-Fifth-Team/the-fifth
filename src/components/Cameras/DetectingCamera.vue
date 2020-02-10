@@ -25,7 +25,7 @@
 </template>
 <script lang="js">
 import * as faceapi from "../../../public/face-api.min";
-
+import {USER_FACE_IDENTIFIER} from "../../graphql/Mutations"
 export default {
   name: 'DetectingCamera',
   props: [],
@@ -108,7 +108,7 @@ export default {
         
         try {
           this.$apollo.mutate({
-            mutation: userFaceIdentifier,
+            mutation: USER_FACE_IDENTIFIER,
             variables: {
               data: {
                 filteredDetections
@@ -128,7 +128,7 @@ export default {
       const video = this.$refs.video1;
       video.pause();
       video.removeAttribute('src');
-      clearInterval(this.refreshId)
+      clearInterval(this.refreshId);
       video.srcObject.getTracks().forEach(track => {
         track.stop();
       });

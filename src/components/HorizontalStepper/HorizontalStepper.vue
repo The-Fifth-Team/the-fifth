@@ -115,7 +115,7 @@ import translations from "./Translations.js";
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { uploadPhotoMutation } from "../../graphql/Mutations.js";
+import { UPLOAD_USER } from "../../graphql/Mutations.js";
 export default {
   name: 'Horizontal',
   filters: {
@@ -295,7 +295,7 @@ export default {
         ) {
           try {
             this.$apollo.mutate({
-              mutation: uploadPhotoMutation,
+              mutation: UPLOAD_USER,
               variables: {
                 data: {
                   firstName,
