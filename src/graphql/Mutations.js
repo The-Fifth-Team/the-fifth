@@ -1,19 +1,15 @@
 import gql from 'graphql-tag'
 
 const UPLOAD_USER = gql `mutation uploadUser($data: User!) {
-    uploadUser(data: $data) {
-      
-    }
+    uploadUser(data: $data)
   }`;
 
 const USER_FACE_IDENTIFIER = gql `mutation userFaceIdentifier($data: [ObservationInput]!) {
-    userFaceIdentifier(data: $data) {
-      
-    }
+    userFaceIdentifier(data: $data)
   }`;
 
-const SIGN_IN_ADMIN = gql `mutation signInAdmin($email: String!, $password String!) {
-    signInAdmin(email: $email, password $password) {
+const SIGN_IN_ADMIN = gql `mutation signInAdmin($email: String!, $password: String!) {
+    signInAdmin(email: $email, password: $password) {
       token
     }
   }`;
