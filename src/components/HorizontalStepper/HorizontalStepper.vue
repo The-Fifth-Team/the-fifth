@@ -115,7 +115,7 @@ import translations from "./Translations.js";
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { uploadPhotoMutation } from "../../graphql/Mutations.js";
+import { UPLOAD_USER } from "../../graphql/Mutations.js";
 export default {
   name: 'Horizontal',
   filters: {
@@ -281,8 +281,10 @@ export default {
       this.$forceUpdate();
     },
     finalClick (e) {
+      console.log(this.$store)
       if (e.target.innerText === 'Finish') {
-        let { firstName, lastName, age, gender, descriptors, photo } = this.$store.getters.getUserData
+        let newStore = Object.create(this.$store.getters.getUserData)
+        let { firstName, lastName, age, gender, descriptors, photo } = newStore
         if ( 
           firstName !== ''
           && lastName  !== ''
@@ -291,28 +293,36 @@ export default {
           && descriptors.length !== 0
           && !!photo
         ) {
-          this.$apollo.mutate({
-            mutation: uploadPhotoMutation,
-            variables: {
-              data: {
-                firstName,
-                lastName,
-                age,
-                gender,
-                descriptors,
-                photo
+          try {
+            this.$apollo.mutate({
+              mutation: UPLOAD_USER,
+              variables: {
+                data: {
+                  firstName,
+                  lastName,
+                  age,
+                  gender,
+                  descriptors,
+                  photo
+                }
               }
-            }
-          })
-          console.log(this.$store.getters.getUserData)
-          document.getElementById('isUploaded').style.display = 'none';
-          this.completedForm = !this.completedForm;
-          this.isDone = !this.isDone;
+            })
+          } catch (err) {
+            alert('Catch error')
+            // this.completedForm = !this.completedForm;
+            // this.isDone = !this.isDone;
+            this.$store.commit('reset')
+            console.log('After: ', newStore)
+            console.log('After: ', this.$store.getters.getUserData)
+          }
         } else {
-          console.log(photo)
-          this.completedForm = !this.completedForm;
-          this.isDone = !this.isDone;
-          document.getElementById('isUploaded').style.display = 'block';
+          alert('Error form')
+          // console.log(photo)
+          // this.completedForm = !this.completedForm;
+          // setTimeout(() => {
+          //   this.completedForm = !this.completedForm;
+          // }, 1200);
+          // this.isDone = !this.isDone;
         }
       }
     },
@@ -322,7 +332,7 @@ export default {
       this.steps.forEach(step => {
         this.nextButton[step.name] = true;
       });
-    }
+    },
   }
 };
 </script>

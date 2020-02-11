@@ -25,8 +25,7 @@
 </template>
 <script lang="js">
 import * as faceapi from "../../../public/face-api.min";
-const axios = require('axios');
-
+import {USER_FACE_IDENTIFIER} from "../../graphql/Mutations"
 export default {
   name: 'DetectingCamera',
   props: [],
@@ -64,7 +63,7 @@ export default {
     });
     //loading required material
     Promise.all([
-        faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
+      faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
         faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
         faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
         faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
@@ -73,6 +72,9 @@ export default {
       .then(() => {
         this.startVideo()
       });
+  },
+  beforeDestroy(){
+    this.turnCameraOff()
   },
   methods: {
     startVideo: function () {
@@ -97,28 +99,36 @@ export default {
       const video = this.$refs.video1;
       const detections = await faceapi.detectAllFaces(video).withFaceLandmarks().withFaceExpressions().withFaceDescriptors()
       if (detections.length) {
-        console.log(detections)
-        // axios({
-            // method: 'post',
-            // url: 'http://localhost:3000/',
-            // data: detections,
-            // headers: {
-              // 'Content-Type': 'application/json'
-            // }
-          // })
-          // .then(function(response) {
-            // console.log({response});
-          // })
-          // .catch(function(error) {
-            // console.log({error});
-          // });
+        let filteredDetections = detections.map(elm => {
+            return {
+              descriptor: elm.descriptor,
+              expressions: elm.expressions
+            }
+          });
+        
+        try {
+          this.$apollo.mutate({
+            mutation: USER_FACE_IDENTIFIER,
+            variables: {
+              data: {
+                filteredDetections
+              }
+            }
+          })
+          .then(result => {
+            console.log('Result after deteving... ' + result);
+          })
+        } catch (err) {
+          // problem with detecting
+          console.log('Problem while Detecting...')
+        }
       }
     },
     turnCameraOff: function (){
       const video = this.$refs.video1;
       video.pause();
       video.removeAttribute('src');
-      clearInterval(this.refreshId)
+      clearInterval(this.refreshId);
       video.srcObject.getTracks().forEach(track => {
         track.stop();
       });
@@ -126,5 +136,4 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
