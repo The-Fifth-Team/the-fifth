@@ -4,7 +4,7 @@ import Login from '@/pages/Login/Login';
 // Core
 // import TypographyPage from '@/pages/Typography/Typography';
 
-import DetectingCamera from '../components/Cameras/DetectingCamera'
+// import DetectingCamera from '../components/Cameras/DetectingCamera'
 
 // Tables
 import TablesBasicPage from '@/pages/Tables/Basic';
@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: DetectingCamera,
+    component: Login,
   },
   {
     path: '/reset',
