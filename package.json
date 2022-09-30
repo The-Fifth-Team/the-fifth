@@ -17,7 +17,7 @@
     "bootstrap": "^4.1.1",
     "bootstrap-vue": "^2.0.0-rc.24",
     "css-loader": "^1.0.0",
-    "d3": "^5.15.0",
+    "d3": "^7.6.1",
     "echarts": "^4.3.0",
     "expose-loader": "^0.7.5",
     "firebase-admin": "^8.9.2",
